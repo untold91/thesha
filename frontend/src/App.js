@@ -1,16 +1,28 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './components/ThemeProvider';
 import { Toaster } from './components/ui/sonner';
 import HeaderNew from './components/HeaderNew';
 import HeroCarousel from './components/HeroCarousel';
 import SolutionsNew from './components/SolutionsNew';
-import Products from './components/Products';
 import TailoredScenarios from './components/TailoredScenarios';
 import Service from './components/Service';
-import Contact from './components/Contact';
 import Footer from './components/Footer';
+import ProductsPage from './pages/ProductsPage';
+import ContactPage from './pages/ContactPage';
+
+// Home Page Component
+const HomePage = () => {
+  return (
+    <>
+      <HeroCarousel />
+      <SolutionsNew />
+      <TailoredScenarios />
+      <Service />
+    </>
+  );
+};
 
 function App() {
   return (
@@ -19,12 +31,11 @@ function App() {
         <div className="App">
           <HeaderNew />
           <main>
-            <HeroCarousel />
-            <SolutionsNew />
-            <Products />
-            <TailoredScenarios />
-            <Service />
-            <Contact />
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/products" element={<ProductsPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+            </Routes>
           </main>
           <Footer />
           <Toaster />
