@@ -32,13 +32,13 @@ const ProductsPage = () => {
   return (
     <div className="min-h-screen pt-16">
       {/* Hero Section */}
-      <section className="py-12 bg-gradient-to-br from-gray-50 to-white dark:from-muted/20 dark:to-background">
+      <section className="py-12 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-6xl font-bold mb-4 text-gray-900 dark:text-foreground">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 text-gray-900 dark:text-gray-100">
               PRODUCTS
             </h1>
-            <p className="text-xl text-gray-600 dark:text-muted-foreground">
+            <p className="text-xl text-gray-600 dark:text-gray-300">
               Premium smart home devices designed for seamless automation
             </p>
           </div>
@@ -46,7 +46,7 @@ const ProductsPage = () => {
       </section>
 
       {/* Search and Category Navigation */}
-      <section className="sticky top-16 z-40 bg-white/95 dark:bg-background/95 backdrop-blur-md border-b border-gray-200 dark:border-border shadow-sm">
+      <section className="sticky top-16 z-40 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 shadow-sm">
         <div className="container mx-auto px-4 lg:px-8 py-4">
           <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
             {/* Search Bar */}
@@ -57,7 +57,7 @@ const ProductsPage = () => {
                 placeholder="Search products..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 h-11 border-gray-200 dark:border-border focus:border-blue-500 dark:focus:border-blue-500"
+                className="pl-10 h-11 border-gray-200 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500"
               />
             </div>
 
@@ -80,7 +80,7 @@ const ProductsPage = () => {
       </section>
 
       {/* Products Grid */}
-      <section className="py-16 bg-white dark:bg-background">
+      <section className="py-16 bg-white dark:bg-gray-800">
         <div className="container mx-auto px-4 lg:px-8">
           {filteredProducts.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -90,10 +90,10 @@ const ProductsPage = () => {
                   to={`/products/${product.id}`}
                   className="group block"
                 >
-                  <div className="relative overflow-hidden rounded-lg border-2 border-gray-100 dark:border-border hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300 bg-white dark:bg-card">
+                  <div className="relative overflow-hidden rounded-lg border-2 border-gray-100 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400 hover:shadow-2xl hover:scale-105 transition-all duration-300 bg-white dark:bg-gray-800">
                     {/* Product Image */}
-                    <div className="relative h-80 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-muted/30 dark:to-muted/10 flex items-center justify-center overflow-hidden">
-                      <div className="text-8xl text-gray-400 dark:text-muted-foreground/50 group-hover:scale-110 transition-transform duration-300">
+                    <div className="relative h-80 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 flex items-center justify-center overflow-hidden">
+                      <div className="text-8xl text-gray-400 dark:text-gray-500 group-hover:scale-110 transition-transform duration-300">
                         {product.name.charAt(0)}
                       </div>
                       
@@ -117,11 +117,11 @@ const ProductsPage = () => {
                     </div>
                     
                     {/* Product Name */}
-                    <div className="p-6 bg-white dark:bg-card">
-                      <h3 className="text-xl font-bold text-gray-900 dark:text-foreground group-hover:text-blue-600 dark:group-hover:text-blue-500 transition-colors">
+                    <div className="p-6 bg-white dark:bg-gray-800">
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                         {product.name}
                       </h3>
-                      <p className="text-sm text-gray-500 dark:text-muted-foreground mt-1">
+                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
                         {product.category}
                       </p>
                     </div>
@@ -131,7 +131,7 @@ const ProductsPage = () => {
             </div>
           ) : (
             <div className="text-center py-16">
-              <p className="text-xl text-gray-600 dark:text-muted-foreground">
+              <p className="text-xl text-gray-600 dark:text-gray-300">
                 No products found matching your search.
               </p>
             </div>
