@@ -3,10 +3,11 @@ import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from './components/ThemeProvider';
 import { Toaster } from './components/ui/sonner';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import Solutions from './components/Solutions';
+import HeaderNew from './components/HeaderNew';
+import HeroCarousel from './components/HeroCarousel';
+import SolutionsNew from './components/SolutionsNew';
 import Products from './components/Products';
+import TailoredScenarios from './components/TailoredScenarios';
 import Service from './components/Service';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -16,11 +17,12 @@ function App() {
     <BrowserRouter>
       <ThemeProvider>
         <div className="App">
-          <Header />
+          <HeaderNew />
           <main>
-            <Hero />
-            <Solutions />
+            <HeroCarousel />
+            <SolutionsNew />
             <Products />
+            <TailoredScenarios />
             <Service />
             <Contact />
           </main>
