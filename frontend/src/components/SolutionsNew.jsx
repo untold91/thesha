@@ -13,13 +13,13 @@ const iconMap = {
 
 const SolutionsNew = () => {
   return (
-    <section id="solutions" className="py-20 bg-gray-50 dark:bg-muted/20">
+    <section id="solutions" className="py-20 bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-foreground">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-gray-100">
             Comprehensive Smart Home Ecosystem
           </h2>
-          <p className="text-lg text-gray-600 dark:text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Complete hardware and software solutions covering all smart home scenarios
           </p>
         </div>
@@ -30,15 +30,15 @@ const SolutionsNew = () => {
             return (
               <div
                 key={solution.id}
-                className="group bg-white dark:bg-card p-8 rounded-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-border"
+                className="group bg-white dark:bg-gray-800 p-8 rounded-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700"
               >
-                <div className="w-16 h-16 rounded-full bg-blue-50 dark:bg-blue-950/30 flex items-center justify-center mb-6 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/40 transition-colors">
-                  <Icon className="w-8 h-8 text-blue-600 dark:text-blue-500" />
+                <div className="w-16 h-16 rounded-full bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center mb-6 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/40 transition-colors">
+                  <Icon className="w-8 h-8 text-blue-600 dark:text-blue-400" />
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-foreground">
+                <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100">
                   {solution.title}
                 </h3>
-                <p className="text-gray-600 dark:text-muted-foreground leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                   {solution.description}
                 </p>
               </div>
