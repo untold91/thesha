@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Home, Building2, Briefcase, HeartPulse, Gamepad2 } from 'lucide-react';
+import React from 'react';
+import { Home, Building2, Briefcase } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 
 const scenarios = [
@@ -51,7 +51,7 @@ const scenarios = [
 ];
 
 const TailoredScenarios = () => {
-  const [activeTab, setActiveTab] = useState('residence');
+  const [activeTab, setActiveTab] = React.useState('residence');
 
   const activeScenario = scenarios.find(s => s.id === activeTab) || scenarios[0];
   const Icon = activeScenario.icon;
@@ -69,21 +69,24 @@ const TailoredScenarios = () => {
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-2 md:grid-cols-5 gap-2 h-auto bg-gray-100 dark:bg-muted/30 p-2 rounded-lg mb-8">
-            {scenarios.map((scenario) => {
-              const ScenarioIcon = scenario.icon;
-              return (
-                <TabsTrigger
-                  key={scenario.id}
-                  value={scenario.id}
-                  className="flex flex-col items-center gap-2 py-4 data-[state=active]:bg-blue-600 data-[state=active]:text-white rounded-md transition-all"
-                >
-                  <ScenarioIcon className="w-6 h-6" />
-                  <span className="text-sm font-medium">{scenario.label}</span>
-                </TabsTrigger>
-              );
-            })}
-          </TabsList>
+          {/* Updated TabsList to show only 3 centered items */}
+          <div className="flex justify-center mb-8">
+            <TabsList className="inline-grid grid-cols-3 gap-2 h-auto bg-gray-100 dark:bg-muted/30 p-2 rounded-lg">
+              {scenarios.map((scenario) => {
+                const ScenarioIcon = scenario.icon;
+                return (
+                  <TabsTrigger
+                    key={scenario.id}
+                    value={scenario.id}
+                    className="flex flex-col items-center gap-2 py-4 px-8 data-[state=active]:bg-blue-600 data-[state=active]:text-white rounded-md transition-all"
+                  >
+                    <ScenarioIcon className="w-6 h-6" />
+                    <span className="text-sm font-medium">{scenario.label}</span>
+                  </TabsTrigger>
+                );
+              })}
+            </TabsList>
+          </div>
 
           {scenarios.map((scenario) => (
             <TabsContent key={scenario.id} value={scenario.id} className="mt-8">
