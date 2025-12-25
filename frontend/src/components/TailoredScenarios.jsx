@@ -60,10 +60,10 @@ const TailoredScenarios = () => {
     <section id="scenarios" className="py-20 bg-white dark:bg-gray-800">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-foreground">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-gray-100">
             Tailored Solutions
           </h2>
-          <p className="text-lg text-gray-600 dark:text-muted-foreground">
+          <p className="text-lg text-gray-600 dark:text-gray-300">
             Smart automation designed for every space
           </p>
         </div>
@@ -71,7 +71,7 @@ const TailoredScenarios = () => {
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           {/* Updated TabsList to show only 3 centered items */}
           <div className="flex justify-center mb-8">
-            <TabsList className="inline-grid grid-cols-3 gap-2 h-auto bg-gray-100 dark:bg-muted/30 p-2 rounded-lg">
+            <TabsList className="inline-grid grid-cols-3 gap-2 h-auto bg-gray-100 dark:bg-gray-700 p-2 rounded-lg">
               {scenarios.map((scenario) => {
                 const ScenarioIcon = scenario.icon;
                 return (
@@ -106,21 +106,21 @@ const TailoredScenarios = () => {
                 {/* Content */}
                 <div className="order-1 lg:order-2">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-950/30 flex items-center justify-center">
-                      <Icon className="w-6 h-6 text-blue-600 dark:text-blue-500" />
+                    <div className="w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
+                      <Icon className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                     </div>
-                    <h3 className="text-3xl font-bold text-gray-900 dark:text-foreground">
+                    <h3 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
                       {scenario.title}
                     </h3>
                   </div>
-                  <p className="text-lg text-gray-600 dark:text-muted-foreground mb-8 leading-relaxed">
+                  <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
                     {scenario.description}
                   </p>
                   <div className="space-y-3">
                     {scenario.features.map((feature, index) => (
                       <div key={index} className="flex items-center gap-3">
                         <div className="w-2 h-2 rounded-full bg-blue-600"></div>
-                        <span className="text-gray-700 dark:text-foreground">{feature}</span>
+                        <span className="text-gray-700 dark:text-gray-200">{feature}</span>
                       </div>
                     ))}
                   </div>
