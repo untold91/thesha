@@ -7,11 +7,11 @@ import HeaderNew from './components/HeaderNew';
 import HeroCarousel from './components/HeroCarousel';
 import SolutionsNew from './components/SolutionsNew';
 import TailoredScenarios from './components/TailoredScenarios';
-import AboutUs from './components/AboutUs';
 import Service from './components/Service';
 import Footer from './components/Footer';
 import ProductsPage from './pages/ProductsPage';
 import ProductDetailPage from './pages/ProductDetailPage';
+import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 
 // Home Page Component
@@ -21,7 +21,6 @@ const HomePage = () => {
       <HeroCarousel />
       <SolutionsNew />
       <TailoredScenarios />
-      <AboutUs />
       <Service />
     </>
   );
@@ -38,6 +37,7 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/products" element={<ProductsPage />} />
               <Route path="/products/:productId" element={<ProductDetailPage />} />
+              <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<ContactPage />} />
             </Routes>
           </main>
