@@ -26,20 +26,22 @@ const HeaderNew = () => {
       <nav className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="text-2xl font-bold text-gray-900 dark:text-white">
-              Sha
-            </div>
-            <div className="hidden md:block text-xs text-gray-500 dark:text-muted-foreground border-l border-gray-300 dark:border-border pl-2">
-              by Mahadeva Systems
-            </div>
+          <Link to="/" className="flex items-center space-x-3">
+            <img 
+              src={theme === 'dark' 
+                ? 'https://customer-assets.emergentagent.com/job_homeautomation-2/artifacts/or7zveut_noBgWhite.png' 
+                : 'https://customer-assets.emergentagent.com/job_homeautomation-2/artifacts/9bbqx9hn_noBgBlack.png'
+              } 
+              alt="Sha by Mahadeva Systems" 
+              className="h-12 w-auto"
+            />
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation - Updated Order */}
           <div className="hidden md:flex items-center space-x-8">
-            <button onClick={() => scrollToSection('home')} className="text-sm font-medium text-gray-700 dark:text-foreground hover:text-blue-600 dark:hover:text-blue-500 transition-colors">HOME</button>
-            <button onClick={() => scrollToSection('solutions')} className="text-sm font-medium text-gray-700 dark:text-foreground hover:text-blue-600 dark:hover:text-blue-500 transition-colors">SOLUTIONS</button>
+            <Link to="/" className="text-sm font-medium text-gray-700 dark:text-foreground hover:text-blue-600 dark:hover:text-blue-500 transition-colors">HOME</Link>
             <Link to="/products" className="text-sm font-medium text-gray-700 dark:text-foreground hover:text-blue-600 dark:hover:text-blue-500 transition-colors">PRODUCTS</Link>
+            <button onClick={() => scrollToSection('solutions')} className="text-sm font-medium text-gray-700 dark:text-foreground hover:text-blue-600 dark:hover:text-blue-500 transition-colors">SOLUTIONS</button>
             <button onClick={() => scrollToSection('scenarios')} className="text-sm font-medium text-gray-700 dark:text-foreground hover:text-blue-600 dark:hover:text-blue-500 transition-colors">SCENARIOS</button>
             <Link to="/contact" className="text-sm font-medium text-gray-700 dark:text-foreground hover:text-blue-600 dark:hover:text-blue-500 transition-colors">CONTACT</Link>
           </div>
@@ -66,12 +68,12 @@ const HeaderNew = () => {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu - Updated Order */}
         {mobileMenuOpen && (
           <div className="md:hidden py-4 space-y-3 border-t border-gray-200 dark:border-border">
-            <button onClick={() => scrollToSection('home')} className="block w-full text-left py-2 text-sm font-medium text-gray-700 dark:text-foreground hover:text-blue-600 dark:hover:text-blue-500 transition-colors">HOME</button>
-            <button onClick={() => scrollToSection('solutions')} className="block w-full text-left py-2 text-sm font-medium text-gray-700 dark:text-foreground hover:text-blue-600 dark:hover:text-blue-500 transition-colors">SOLUTIONS</button>
+            <Link to="/" className="block w-full text-left py-2 text-sm font-medium text-gray-700 dark:text-foreground hover:text-blue-600 dark:hover:text-blue-500 transition-colors" onClick={() => setMobileMenuOpen(false)}>HOME</Link>
             <Link to="/products" className="block w-full text-left py-2 text-sm font-medium text-gray-700 dark:text-foreground hover:text-blue-600 dark:hover:text-blue-500 transition-colors" onClick={() => setMobileMenuOpen(false)}>PRODUCTS</Link>
+            <button onClick={() => scrollToSection('solutions')} className="block w-full text-left py-2 text-sm font-medium text-gray-700 dark:text-foreground hover:text-blue-600 dark:hover:text-blue-500 transition-colors">SOLUTIONS</button>
             <button onClick={() => scrollToSection('scenarios')} className="block w-full text-left py-2 text-sm font-medium text-gray-700 dark:text-foreground hover:text-blue-600 dark:hover:text-blue-500 transition-colors">SCENARIOS</button>
             <Link to="/contact" className="block w-full text-left py-2 text-sm font-medium text-gray-700 dark:text-foreground hover:text-blue-600 dark:hover:text-blue-500 transition-colors" onClick={() => setMobileMenuOpen(false)}>CONTACT</Link>
           </div>

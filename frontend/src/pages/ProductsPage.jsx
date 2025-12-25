@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { Check } from 'lucide-react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
-import { Badge } from '../components/ui/badge';
+import { Link } from 'react-router-dom';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { mockData } from '../mock';
 
@@ -23,7 +21,7 @@ const ProductsPage = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-6xl font-bold mb-4 text-gray-900 dark:text-foreground">
-              Shop Products
+              PRODUCTS
             </h1>
             <p className="text-xl text-gray-600 dark:text-muted-foreground">
               Premium smart home devices designed for seamless automation
@@ -56,41 +54,48 @@ const ProductsPage = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProducts.map((product) => (
-              <Card
+              <Link
                 key={product.id}
-                className="group hover:shadow-xl transition-all duration-300 border-2 border-gray-100 dark:border-border hover:border-blue-500 dark:hover:border-blue-500 overflow-hidden bg-white dark:bg-card"
+                to={`/products/${product.id}`}
+                className="group block"
               >
-                {/* Product Image Placeholder */}
-                <div className="h-64 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-muted/30 dark:to-muted/10 flex items-center justify-center overflow-hidden">
-                  <div className="text-6xl text-gray-400 dark:text-muted-foreground/50 group-hover:scale-110 transition-transform duration-300">
-                    {product.name.charAt(0)}
+                <div className="relative overflow-hidden rounded-lg border-2 border-gray-100 dark:border-border hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300 bg-white dark:bg-card">
+                  {/* Product Image */}
+                  <div className="relative h-80 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-muted/30 dark:to-muted/10 flex items-center justify-center overflow-hidden">
+                    <div className="text-8xl text-gray-400 dark:text-muted-foreground/50 group-hover:scale-110 transition-transform duration-300">
+                      {product.name.charAt(0)}
+                    </div>
+                    
+                    {/* Hover Overlay */}
+                    <div className="absolute inset-0 bg-black/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center p-6">
+                      <p className="text-white text-sm mb-4">
+                        {product.description}
+                      </p>
+                      <div className="space-y-2">
+                        {product.features.slice(0, 3).map((feature, index) => (
+                          <div key={index} className="flex items-center space-x-2">
+                            <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                            <span className="text-white text-sm">{feature}</span>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="mt-4 text-blue-400 text-sm font-medium">
+                        Click to view details →
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Product Name */}
+                  <div className="p-6 bg-white dark:bg-card">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-foreground group-hover:text-blue-600 dark:group-hover:text-blue-500 transition-colors">
+                      {product.name}
+                    </h3>
+                    <p className="text-sm text-gray-500 dark:text-muted-foreground mt-1">
+                      {product.category}
+                    </p>
                   </div>
                 </div>
-                
-                <div className="h-1 bg-gradient-to-r from-blue-400 via-blue-600 to-blue-400 group-hover:h-2 transition-all duration-300"></div>
-                
-                <CardHeader>
-                  <Badge variant="secondary" className="w-fit mb-2 bg-blue-50 dark:bg-blue-950/30 text-blue-700 dark:text-blue-400">
-                    {product.category}
-                  </Badge>
-                  <CardTitle className="text-xl font-bold text-gray-900 dark:text-foreground">
-                    {product.name}
-                  </CardTitle>
-                  <CardDescription className="text-gray-600 dark:text-muted-foreground">
-                    {product.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-2">
-                    {product.features.map((feature, index) => (
-                      <div key={index} className="flex items-center space-x-2">
-                        <Check className="w-4 h-4 text-blue-600 dark:text-blue-500 flex-shrink-0" />
-                        <span className="text-sm text-gray-600 dark:text-muted-foreground">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+              </Link>
             ))}
           </div>
         </div>
