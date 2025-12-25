@@ -10,6 +10,7 @@ import TailoredScenarios from './components/TailoredScenarios';
 import Service from './components/Service';
 import Footer from './components/Footer';
 import ProductsPage from './pages/ProductsPage';
+import ProductDetailPage from './pages/ProductDetailPage';
 import ContactPage from './pages/ContactPage';
 
 // Home Page Component
@@ -34,6 +35,7 @@ function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/products" element={<ProductsPage />} />
+              <Route path="/products/:productId" element={<ProductDetailPage />} />
               <Route path="/contact" element={<ContactPage />} />
             </Routes>
           </main>
