@@ -7,6 +7,7 @@ import HeaderNew from './components/HeaderNew';
 import HeroCarousel from './components/HeroCarousel';
 import SolutionsNew from './components/SolutionsNew';
 import TailoredScenarios from './components/TailoredScenarios';
+import AboutUs from './components/AboutUs';
 import Service from './components/Service';
 import Footer from './components/Footer';
 import ProductsPage from './pages/ProductsPage';
@@ -20,6 +21,7 @@ const HomePage = () => {
       <HeroCarousel />
       <SolutionsNew />
       <TailoredScenarios />
+      <AboutUs />
       <Service />
     </>
   );
