@@ -13,14 +13,20 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand Section with Logo */}
           <div className="space-y-4">
-            <img 
-              src={theme === 'dark' 
-                ? 'https://customer-assets.emergentagent.com/job_homeautomation-2/artifacts/or7zveut_noBgWhite.png' 
-                : 'https://customer-assets.emergentagent.com/job_homeautomation-2/artifacts/9bbqx9hn_noBgBlack.png'
-              } 
-              alt="Sha by Mahadeva Systems" 
-              className="h-16 w-auto"
-            />
+            <div className="flex items-center space-x-3">
+              <img 
+                src={theme === 'dark' 
+                  ? 'https://customer-assets.emergentagent.com/job_homeautomation-2/artifacts/or7zveut_noBgWhite.png' 
+                  : 'https://customer-assets.emergentagent.com/job_homeautomation-2/artifacts/9bbqx9hn_noBgBlack.png'
+                } 
+                alt="Sha by Mahadeva Systems" 
+                className="h-14 w-auto"
+              />
+              <div>
+                <div className="text-xs text-gray-600 dark:text-gray-400">by</div>
+                <div className="text-sm font-semibold text-gray-900 dark:text-white">Mahadeva Systems</div>
+              </div>
+            </div>
             <p className="text-sm text-gray-600 dark:text-muted-foreground leading-relaxed">
               {mockData.company.description}
             </p>
