@@ -4,11 +4,10 @@ import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { Button } from './ui/button';
-import { useToast } from '../hooks/use-toast';
+import { toast } from 'sonner';
 import { mockData } from '../mock';
 
 const Contact = () => {
-  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -19,8 +18,7 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Mock submission
-    toast({
-      title: "Message Sent!",
+    toast.success("Message Sent!", {
       description: "We'll get back to you within 24 hours.",
     });
     setFormData({ name: '', email: '', phone: '', message: '' });
@@ -31,13 +29,13 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-background">
+    <section id="contact" className="py-20 bg-white dark:bg-background">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-foreground">
             Get In Touch
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-gray-600 dark:text-muted-foreground">
             Ready to transform your space? Contact us for a free consultation
           </p>
         </div>
@@ -45,52 +43,52 @@ const Contact = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {/* Contact Info Cards */}
           <div className="space-y-6">
-            <Card className="border-2 hover:border-primary/50 transition-colors duration-300">
+            <Card className="border-2 border-gray-100 dark:border-border hover:border-blue-500 dark:hover:border-blue-500 transition-colors duration-300 bg-white dark:bg-card">
               <CardHeader>
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-2">
-                  <Mail className="w-6 h-6 text-primary" />
+                <div className="w-12 h-12 rounded-lg bg-blue-50 dark:bg-blue-950/30 flex items-center justify-center mb-2">
+                  <Mail className="w-6 h-6 text-blue-600 dark:text-blue-500" />
                 </div>
-                <CardTitle className="text-lg">Email Us</CardTitle>
+                <CardTitle className="text-lg text-gray-900 dark:text-foreground">Email Us</CardTitle>
               </CardHeader>
               <CardContent>
-                <a href={`mailto:${mockData.company.email}`} className="text-muted-foreground hover:text-primary transition-colors break-all">
+                <a href={`mailto:${mockData.company.email}`} className="text-gray-600 dark:text-muted-foreground hover:text-blue-600 dark:hover:text-blue-500 transition-colors break-all">
                   {mockData.company.email}
                 </a>
               </CardContent>
             </Card>
 
-            <Card className="border-2 hover:border-primary/50 transition-colors duration-300">
+            <Card className="border-2 border-gray-100 dark:border-border hover:border-blue-500 dark:hover:border-blue-500 transition-colors duration-300 bg-white dark:bg-card">
               <CardHeader>
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-2">
-                  <Phone className="w-6 h-6 text-primary" />
+                <div className="w-12 h-12 rounded-lg bg-blue-50 dark:bg-blue-950/30 flex items-center justify-center mb-2">
+                  <Phone className="w-6 h-6 text-blue-600 dark:text-blue-500" />
                 </div>
-                <CardTitle className="text-lg">Call Us</CardTitle>
+                <CardTitle className="text-lg text-gray-900 dark:text-foreground">Call Us</CardTitle>
               </CardHeader>
               <CardContent>
-                <a href={`tel:${mockData.company.phone}`} className="text-muted-foreground hover:text-primary transition-colors">
+                <a href={`tel:${mockData.company.phone}`} className="text-gray-600 dark:text-muted-foreground hover:text-blue-600 dark:hover:text-blue-500 transition-colors">
                   {mockData.company.phone}
                 </a>
               </CardContent>
             </Card>
 
-            <Card className="border-2 hover:border-primary/50 transition-colors duration-300">
+            <Card className="border-2 border-gray-100 dark:border-border hover:border-blue-500 dark:hover:border-blue-500 transition-colors duration-300 bg-white dark:bg-card">
               <CardHeader>
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-2">
-                  <MapPin className="w-6 h-6 text-primary" />
+                <div className="w-12 h-12 rounded-lg bg-blue-50 dark:bg-blue-950/30 flex items-center justify-center mb-2">
+                  <MapPin className="w-6 h-6 text-blue-600 dark:text-blue-500" />
                 </div>
-                <CardTitle className="text-lg">Visit Us</CardTitle>
+                <CardTitle className="text-lg text-gray-900 dark:text-foreground">Visit Us</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">Serving across India</p>
+                <p className="text-gray-600 dark:text-muted-foreground">Serving across India</p>
               </CardContent>
             </Card>
           </div>
 
           {/* Contact Form */}
           <div className="lg:col-span-2">
-            <Card className="border-2">
+            <Card className="border-2 border-gray-100 dark:border-border bg-white dark:bg-card">
               <CardHeader>
-                <CardTitle className="text-2xl">Send us a message</CardTitle>
+                <CardTitle className="text-2xl text-gray-900 dark:text-foreground">Send us a message</CardTitle>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -102,7 +100,7 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="h-12"
+                      className="h-12 border-gray-200 dark:border-border focus:border-blue-500 dark:focus:border-blue-500"
                     />
                   </div>
                   <div>
@@ -113,7 +111,7 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="h-12"
+                      className="h-12 border-gray-200 dark:border-border focus:border-blue-500 dark:focus:border-blue-500"
                     />
                   </div>
                   <div>
@@ -124,7 +122,7 @@ const Contact = () => {
                       value={formData.phone}
                       onChange={handleChange}
                       required
-                      className="h-12"
+                      className="h-12 border-gray-200 dark:border-border focus:border-blue-500 dark:focus:border-blue-500"
                     />
                   </div>
                   <div>
@@ -135,12 +133,13 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       rows={6}
+                      className="border-gray-200 dark:border-border focus:border-blue-500 dark:focus:border-blue-500"
                     />
                   </div>
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full bg-foreground text-background hover:bg-foreground/90 h-12 text-lg font-semibold"
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white h-12 text-lg font-semibold rounded-lg"
                   >
                     Send Message
                     <Send className="ml-2 w-5 h-5" />
