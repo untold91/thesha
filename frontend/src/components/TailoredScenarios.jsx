@@ -47,36 +47,6 @@ const scenarios = [
       'Guest preferences memory'
     ],
     image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80'
-  },
-  {
-    id: 'elderly',
-    label: 'Elderly Care',
-    icon: HeartPulse,
-    title: 'Smart Elderly Care',
-    description: 'Ensure safety and comfort for elderly residents with fall detection, medication reminders, and emergency response systems.',
-    features: [
-      'Fall detection sensors',
-      'Emergency call systems',
-      'Medication reminders',
-      'Activity monitoring',
-      'Remote family access'
-    ],
-    image: 'https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=800&q=80'
-  },
-  {
-    id: 'gaming',
-    label: 'Gaming Room',
-    icon: Gamepad2,
-    title: 'Smart Gaming Room',
-    description: 'Create the ultimate gaming environment with RGB lighting synchronization, climate control, and immersive audio-visual automation.',
-    features: [
-      'RGB lighting sync',
-      'Sound optimization',
-      'Climate control',
-      'Scene automation',
-      'Stream setup integration'
-    ],
-    image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&q=80'
   }
 ];
 
