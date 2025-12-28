@@ -25,8 +25,10 @@ const HomePage = () => {
   return (
     <>
       <HeroCarousel />
+      <SolutionsNew />
+      <TailoredScenarios />
       
-      {/* Product Selector CTA Banner */}
+      {/* Product Selector CTA Banner - Moved after Tailored Solutions */}
       <div className="bg-gradient-to-r from-blue-600 to-blue-700 dark:from-blue-700 dark:to-blue-800 py-8">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
@@ -46,11 +48,9 @@ const HomePage = () => {
         </div>
       </div>
       
-      <SolutionsNew />
-      <TailoredScenarios />
       <Service />
       
-      {showSelector && <ProductSelector />}
+      {showSelector && <ProductSelector onClose={() => setShowSelector(false)} />}
     </>
   );
 };
