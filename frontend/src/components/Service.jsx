@@ -1,20 +1,9 @@
 import React from 'react';
 import { Shield, CheckCircle2 } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 import { Card, CardContent } from './ui/card';
-import { Button } from './ui/button';
 import { mockData } from '../mock';
 
 const Service = () => {
-  const navigate = useNavigate();
-
-  const handleContactClick = () => {
-    navigate('/contact');
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 100);
-  };
-
   return (
     <section id="service" className="py-20 bg-gradient-to-br from-blue-50 to-gray-50 dark:from-blue-950/10 dark:to-gray-900">
       <div className="container mx-auto px-4 lg:px-8">
@@ -52,20 +41,9 @@ const Service = () => {
               </div>
 
               <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
-                <p className="text-center text-gray-600 dark:text-gray-300 mb-6">
+                <p className="text-center text-gray-600 dark:text-gray-300">
                   {mockData.serviceInfo.postWarranty}
                 </p>
-                
-                {/* Contact Us Button */}
-                <div className="flex justify-center">
-                  <Button 
-                    size="lg" 
-                    onClick={handleContactClick}
-                    className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white px-8 py-6 text-lg font-semibold"
-                  >
-                    Contact Us
-                  </Button>
-                </div>
               </div>
             </CardContent>
           </Card>
