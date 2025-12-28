@@ -64,7 +64,8 @@ const HeaderNew = () => {
             <button onClick={() => handleNavClick('/products')} className="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">PRODUCTS</button>
             <button onClick={() => scrollToSection('solutions')} className="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">SOLUTIONS</button>
             <button onClick={() => scrollToSection('scenarios')} className="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">SCENARIOS</button>
-            <button onClick={() => handleNavClick('/about')} className="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">ABOUT US</button>
+            <button onClick={() => handleNavClick('/about')} className="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">ABOUT</button>
+            <button onClick={() => handleNavClick('/contact')} className="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">CONTACT</button>
           </div>
 
           {/* Theme Toggle & Mobile Menu */}
@@ -96,7 +97,8 @@ const HeaderNew = () => {
             <button onClick={() => handleNavClick('/products')} className="block w-full text-left py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">PRODUCTS</button>
             <button onClick={() => scrollToSection('solutions')} className="block w-full text-left py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">SOLUTIONS</button>
             <button onClick={() => scrollToSection('scenarios')} className="block w-full text-left py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">SCENARIOS</button>
-            <button onClick={() => handleNavClick('/about')} className="block w-full text-left py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">ABOUT US</button>
+            <button onClick={() => handleNavClick('/about')} className="block w-full text-left py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">ABOUT</button>
+            <button onClick={() => handleNavClick('/contact')} className="block w-full text-left py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">CONTACT</button>
           </div>
         )}
       </nav>

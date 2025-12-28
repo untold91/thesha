@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { ArrowRight, Home, Building2, Briefcase, CheckCircle } from 'lucide-react';
+import { ArrowRight, Home, Building2, Briefcase, CheckCircle, X } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import { useNavigate } from 'react-router-dom';
 
-const ProductSelector = () => {
+const ProductSelector = ({ onClose }) => {
   const [step, setStep] = useState(0);
   const [selections, setSelections] = useState({});
   const navigate = useNavigate();
@@ -52,6 +52,12 @@ const ProductSelector = () => {
     setSelections({});
   };
 
+  const handleCancel = () => {
+    if (onClose) {
+      onClose();
+    }
+  };
+
   const getRecommendation = () => {
     const propertyType = selections[0];
     const features = selections[1];
@@ -77,9 +83,14 @@ const ProductSelector = () => {
       <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
         <Card className="max-w-2xl w-full bg-white dark:bg-gray-800 shadow-2xl">
           <CardHeader className="border-b border-gray-200 dark:border-gray-700">
-            <CardTitle className="text-2xl text-center text-gray-900 dark:text-gray-100">
-              Your Personalized Recommendation
-            </CardTitle>
+            <div className="flex items-center justify-between">
+              <CardTitle className="text-2xl text-gray-900 dark:text-gray-100">
+                Your Personalized Recommendation
+              </CardTitle>
+              <Button variant="ghost" size="icon" onClick={handleCancel}>
+                <X className="w-5 h-5" />
+              </Button>
+            </div>
           </CardHeader>
           <CardContent className="p-6 space-y-6">
             <div className="text-center">
@@ -105,7 +116,7 @@ const ProductSelector = () => {
 
             <div className="flex flex-col sm:flex-row gap-3">
               <Button 
-                onClick={() => navigate('/contact')} 
+                onClick={() => { navigate('/contact'); handleCancel(); }} 
                 className="flex-1 bg-blue-600 hover:bg-blue-700 h-12 text-lg"
               >
                 Request a Demo
@@ -133,7 +144,10 @@ const ProductSelector = () => {
         <CardHeader className="border-b border-gray-200 dark:border-gray-700">
           <div className="flex justify-between items-center mb-2">
             <span className="text-sm text-gray-600 dark:text-gray-400">Step {step + 1} of {questions.length}</span>
-            <Button variant="ghost" size="sm" onClick={resetSelector}>Cancel</Button>
+            <Button variant="ghost" size="sm" onClick={handleCancel}>
+              <X className="w-4 h-4 mr-2" />
+              Cancel
+            </Button>
           </div>
           <CardTitle className="text-2xl text-gray-900 dark:text-gray-100">
             {currentQuestion.question}
