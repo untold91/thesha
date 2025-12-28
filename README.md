@@ -21,6 +21,7 @@ A modern, full-stack web application for smart home automation services, featuri
 - [Deployment](#deployment)
 - [Troubleshooting](#troubleshooting)
 - [Contact](#contact)
+- [TODO](#todo)
 
 ---
 
@@ -30,34 +31,72 @@ Sha is a comprehensive smart home automation platform that showcases:
 - Premium smart home products (touch panels, lighting control, CCTV, sensors)
 - Tailored solutions for residences, offices, and hotels
 - Service & support information with 1-year free warranty
+- Interactive product selector and AI-powered chatbot
 - Contact and inquiry management system
+- India-wide project location mapping
 
 ---
 
 ## ✨ Features
 
 ### Frontend
-- 🎨 **Modern UI/UX**: Built with React 19 and Shadcn UI components
-- 🌓 **Dark/Light Theme**: Seamless theme switching with persistent preferences
-- 📱 **Responsive Design**: Optimized for all device sizes
-- 🔍 **Product Search**: Real-time product filtering and search
-- 🎯 **Category Navigation**: Easy product browsing by category
-- 🖼️ **Image Carousel**: Hero slider showcasing key products
-- 📄 **Dynamic Routing**: Separate pages for products, about, and contact
-- ⚡ **Fast Navigation**: Smooth scrolling and instant page transitions
+
+#### 🎨 **User Interface**
+- Modern UI/UX built with React 19 and Shadcn UI components
+- Fully responsive design optimized for desktop, tablet, and mobile
+- Dark/Light theme with seamless switching and persistent preferences
+- Touch-friendly buttons and mobile-optimized navigation
+- No horizontal scrolling - fluid adaptation to all screen sizes
+
+#### 🔍 **Product Management**
+- Real-time product search and filtering by category
+- Product cards with enhanced hover effects (scale, shadow, overlay)
+- Separate dedicated pages for products and product details
+- Category-based product navigation
+
+#### 🎯 **User Engagement**
+- **AI Chatbot**: Interactive assistant with quick responses for common queries
+  - Quick action buttons (View Products, Smart Solutions, Contact Us, Get a Quote)
+  - Natural conversation flow
+  - Context-aware responses
+- **Product Selector**: 3-step guided wizard helping users find solutions
+  - Property type selection (Residence, Office, Hotel)
+  - Feature preferences
+  - Property size options
+  - Personalized recommendations
+- **Hero Carousel**: Auto-rotating slides with benefit-focused content
+  - Clear CTAs (Get Started, View Products)
+  - Tangible value propositions (30% energy savings, 4K footage)
+  - Animated scroll indicators
+
+#### 📄 **Pages & Navigation**
+- **Home**: Hero carousel, solutions, tailored scenarios, service info, product selector
+- **Products**: Category-filtered product grid with search
+- **Product Detail**: Individual product pages (ready for enhancement)
+- **About**: Company info with interactive India map showing project locations
+- **Contact**: Professional contact form with information cards
+- Smooth scrolling between sections
+- Auto-scroll to top on page navigation
+
+#### 🗺️ **Interactive Features**
+- India map with animated location markers
+- Hover tooltips showing project counts per city
+- 8+ major cities coverage visualization
 
 ### Backend
 - 🚀 **FastAPI**: Modern, fast Python web framework
 - 🗄️ **MongoDB**: NoSQL database for flexible data storage
 - 🔒 **CORS Enabled**: Secure cross-origin resource sharing
-- 📊 **RESTful APIs**: Clean API structure with proper routing
+- 📊 **RESTful APIs**: Clean API structure with proper routing (all routes prefixed with `/api`)
 - 🔄 **Async Operations**: Non-blocking database operations
 
 ### Additional Features
-- 📧 **Contact Form**: Inquiry submission system
-- 🔗 **Social Media Integration**: Links to all major platforms
-- 🎭 **Hover Effects**: Interactive product cards
-- 📱 **Mobile Menu**: Responsive navigation for mobile devices
+- 📧 **Contact Form**: Inquiry submission with toast notifications
+- 🔗 **Social Media Integration**: YouTube, LinkedIn, Facebook, Instagram, WhatsApp, Twitter/X
+- 🎭 **Hover Effects**: Interactive elements throughout
+- 📱 **Mobile Menu**: Hamburger navigation for mobile devices
+- 🎨 **Design System**: Consistent color scheme and typography
+- ⚡ **Performance**: Fast loading times and optimized assets
 
 ---
 
@@ -67,10 +106,12 @@ Sha is a comprehensive smart home automation platform that showcases:
 - **React 19.0.0** - UI library
 - **React Router DOM 7.5.1** - Client-side routing
 - **Tailwind CSS 3.4.17** - Utility-first CSS framework
-- **Shadcn UI** - Pre-built component library
-- **Axios 1.8.4** - HTTP client
-- **Lucide React** - Icon library
-- **Sonner** - Toast notifications
+- **Shadcn UI** - Pre-built accessible component library
+- **Axios 1.8.4** - HTTP client for API calls
+- **Lucide React 0.507.0** - Icon library
+- **Sonner 2.0.3** - Toast notifications
+- **React Hook Form 7.56.2** - Form management
+- **Zod 3.24.4** - Schema validation
 
 ### Backend
 - **Python 3.x** - Programming language
@@ -86,8 +127,9 @@ Sha is a comprehensive smart home automation platform that showcases:
 - **Yarn** - Package manager (frontend)
 - **Pip** - Package manager (backend)
 - **Supervisor** - Process control system
-- **ESLint** - JavaScript linting
+- **ESLint 9.23.0** - JavaScript linting
 - **Ruff** - Python linting
+- **CRACO 7.1.0** - Create React App Configuration Override
 
 ---
 
@@ -156,10 +198,12 @@ Add the following variables:
 MONGO_URL=mongodb://localhost:27017
 DB_NAME=smart_home_db
 
-# Server Configuration
+# Server Configuration (DO NOT MODIFY - managed by Kubernetes)
 HOST=0.0.0.0
 PORT=8001
 ```
+
+**IMPORTANT**: The backend MUST run on port 8001 and all API routes MUST be prefixed with `/api` for proper Kubernetes ingress routing.
 
 ### 3. Frontend Setup
 
@@ -173,6 +217,8 @@ cd ../frontend
 yarn install
 ```
 
+**NEVER use npm** - it will cause breaking changes. Always use yarn.
+
 #### Set Up Environment Variables
 Create a `.env` file in the `frontend` directory:
 ```bash
@@ -181,8 +227,8 @@ touch .env
 
 Add the following variables:
 ```env
-# Backend API URL
-REACT_APP_BACKEND_URL=http://localhost:8001
+# Backend API URL (DO NOT MODIFY - production configured)
+REACT_APP_BACKEND_URL=<your-backend-url>
 
 # Port Configuration
 PORT=3000
@@ -191,6 +237,8 @@ PORT=3000
 REACT_APP_ENABLE_VISUAL_EDITS=false
 ENABLE_HEALTH_CHECK=false
 ```
+
+**IMPORTANT**: Do NOT modify `REACT_APP_BACKEND_URL` in the .env file. It is configured for the deployment environment.
 
 ### 4. MongoDB Setup
 
@@ -218,44 +266,63 @@ mongosh
 
 ### Backend Variables
 
-| Variable | Description | Example |
-|----------|-------------|---------|
-| `MONGO_URL` | MongoDB connection string | `mongodb://localhost:27017` |
-| `DB_NAME` | Database name | `smart_home_db` |
-| `HOST` | Server host | `0.0.0.0` |
-| `PORT` | Server port | `8001` |
+| Variable | Description | Example | Notes |
+|----------|-------------|---------|-------|
+| `MONGO_URL` | MongoDB connection string | `mongodb://localhost:27017` | Configured for local access |
+| `DB_NAME` | Database name | `smart_home_db` | |
+| `HOST` | Server host | `0.0.0.0` | DO NOT MODIFY |
+| `PORT` | Server port | `8001` | DO NOT MODIFY |
 
 ### Frontend Variables
 
-| Variable | Description | Example |
-|----------|-------------|---------|
-| `REACT_APP_BACKEND_URL` | Backend API URL | `http://localhost:8001` |
-| `PORT` | Development server port | `3000` |
-| `REACT_APP_ENABLE_VISUAL_EDITS` | Enable visual editing | `false` |
+| Variable | Description | Example | Notes |
+|----------|-------------|---------|-------|
+| `REACT_APP_BACKEND_URL` | Backend API URL | `https://your-domain.com` | DO NOT MODIFY |
+| `PORT` | Development server port | `3000` | |
+| `REACT_APP_ENABLE_VISUAL_EDITS` | Enable visual editing | `false` | |
+
+**CRITICAL NOTES**:
+- Backend MUST run on port 8001 for Kubernetes ingress
+- All backend API routes MUST be prefixed with `/api`
+- Frontend accesses backend ONLY via `REACT_APP_BACKEND_URL`
+- Hot reload is enabled - only restart when installing dependencies or modifying .env
 
 ---
 
 ## 🏃 Running the Application
 
-### Option 1: Using Supervisor (Production-like)
+### Using Supervisor (Recommended)
 
-If supervisor is configured:
+Supervisor is configured to manage both frontend and backend:
+
 ```bash
+# Check status
+sudo supervisorctl status
+
 # Start all services
 sudo supervisorctl start all
 
-# Check status
-sudo supervisorctl status
+# Restart services (only when needed)
+sudo supervisorctl restart frontend
+sudo supervisorctl restart backend
+sudo supervisorctl restart all
 
 # View logs
 sudo supervisorctl tail -f frontend
 sudo supervisorctl tail -f backend
 
-# Restart services
-sudo supervisorctl restart all
+# Stop services
+sudo supervisorctl stop all
 ```
 
-### Option 2: Manual Development Mode
+**When to Restart**:
+- After installing new dependencies (yarn add / pip install)
+- After modifying .env files
+- NOT needed for code changes (hot reload is enabled)
+
+### Manual Development Mode
+
+Only use this if supervisor is not available:
 
 #### Terminal 1 - Start Backend
 ```bash
@@ -270,14 +337,9 @@ cd frontend
 yarn start
 ```
 
-#### Terminal 3 - MongoDB (if not running as service)
-```bash
-mongod --dbpath /path/to/data
-```
-
 ### Access the Application
 
-- **Frontend**: http://localhost:3000
+- **Frontend**: http://localhost:3000 or your configured domain
 - **Backend API**: http://localhost:8001
 - **API Documentation**: http://localhost:8001/docs
 - **MongoDB**: mongodb://localhost:27017
@@ -289,37 +351,40 @@ mongod --dbpath /path/to/data
 ```
 /app
 ├── backend/
-│   ├── server.py              # Main FastAPI application
+│   ├── server.py              # Main FastAPI application with /api prefix
 │   ├── requirements.txt       # Python dependencies
-│   ├── .env                   # Backend environment variables
+│   ├── .env                   # Backend environment variables (DO NOT MODIFY URLs)
 │   └── venv/                  # Virtual environment (if created)
 │
 ├── frontend/
 │   ├── public/                # Static files
 │   ├── src/
 │   │   ├── components/        # React components
-│   │   │   ├── ui/           # Shadcn UI components
-│   │   │   ├── HeaderNew.jsx
-│   │   │   ├── Footer.jsx
-│   │   │   ├── HeroCarousel.jsx
-│   │   │   ├── Service.jsx
-│   │   │   ├── SolutionsNew.jsx
-│   │   │   ├── TailoredScenarios.jsx
-│   │   │   └── ThemeProvider.jsx
+│   │   │   ├── ui/           # Shadcn UI components (calendar, button, card, etc.)
+│   │   │   ├── HeaderNew.jsx # Navigation header with theme toggle
+│   │   │   ├── Footer.jsx    # Footer with social links and branding
+│   │   │   ├── HeroCarousel.jsx # Auto-rotating hero slider
+│   │   │   ├── Chatbot.jsx   # AI assistant chatbot
+│   │   │   ├── ProductSelector.jsx # Guided solution finder
+│   │   │   ├── Service.jsx   # Service & warranty section
+│   │   │   ├── SolutionsNew.jsx # Solutions grid
+│   │   │   ├── TailoredScenarios.jsx # Scenario tabs
+│   │   │   └── ThemeProvider.jsx # Dark/light theme management
 │   │   ├── pages/            # Page components
-│   │   │   ├── ProductsPage.jsx
-│   │   │   ├── ProductDetailPage.jsx
-│   │   │   ├── AboutPage.jsx
-│   │   │   └── ContactPage.jsx
+│   │   │   ├── ProductsPage.jsx # Product listing with search & categories
+│   │   │   ├── ProductDetailPage.jsx # Individual product view
+│   │   │   ├── AboutPage.jsx # About with India map
+│   │   │   └── ContactPage.jsx # Contact form
 │   │   ├── hooks/            # Custom React hooks
-│   │   ├── App.js            # Main App component
+│   │   │   └── use-toast.js  # Toast notification hook
+│   │   ├── App.js            # Main App component with routing
 │   │   ├── App.css           # App styles
 │   │   ├── index.js          # Entry point
-│   │   ├── index.css         # Global styles
-│   │   └── mock.js           # Mock data
-│   ├── package.json          # Node dependencies
+│   │   ├── index.css         # Global styles with Tailwind
+│   │   └── mock.js           # Mock data for development
+│   ├── package.json          # Node dependencies (use yarn only!)
 │   ├── tailwind.config.js    # Tailwind configuration
-│   ├── .env                  # Frontend environment variables
+│   ├── .env                  # Frontend environment variables (DO NOT MODIFY URLs)
 │   └── craco.config.js       # Create React App configuration
 │
 └── README.md                 # This file
@@ -434,7 +499,7 @@ server {
         try_files $uri $uri/ /index.html;
     }
 
-    # Backend API
+    # Backend API - CRITICAL: /api prefix routing
     location /api {
         proxy_pass http://localhost:8001;
         proxy_http_version 1.1;
@@ -476,6 +541,7 @@ If deploying on Emergent platform:
 2. **Environment Variables**: Use the platform's environment variable manager
 3. **Deployment**: Push your code to the connected Git repository
 4. **Auto-deployment**: Platform automatically builds and deploys
+5. **URL Configuration**: Managed automatically - do not modify .env URLs
 
 ---
 
@@ -494,7 +560,7 @@ PORT=3001 yarn start
 
 #### Module Not Found Errors
 ```bash
-# Clear node_modules and reinstall
+# Clear node_modules and reinstall with yarn (NEVER use npm)
 rm -rf node_modules yarn.lock
 yarn install
 ```
@@ -507,6 +573,11 @@ rm -rf node_modules build
 yarn install
 yarn build
 ```
+
+#### Component Import Errors
+- Ensure you're importing from the correct path
+- Shadcn components are in `/components/ui/`
+- Check for typos in import paths
 
 ### Backend Issues
 
@@ -534,6 +605,11 @@ lsof -ti:8001 | xargs kill -9
 pip install -r requirements.txt --force-reinstall
 ```
 
+#### API Routes Not Working
+- Ensure all routes are prefixed with `/api`
+- Check Kubernetes ingress configuration
+- Verify backend is running on port 8001
+
 ### Common Issues
 
 #### CORS Errors
@@ -545,11 +621,18 @@ pip install -r requirements.txt --force-reinstall
 - Check browser console for errors
 - Verify backend is running: `curl http://localhost:8001/api/`
 - Check network tab in browser DevTools
+- Ensure routes are prefixed with `/api`
 
 #### Styling Issues
 - Clear browser cache
 - Check if Tailwind classes are correctly applied
+- Verify dark mode classes are working
 - Rebuild frontend: `yarn build`
+
+#### Hot Reload Not Working
+- Check if files are being saved correctly
+- Restart development server
+- Clear browser cache
 
 ---
 
@@ -562,12 +645,12 @@ pip install -r requirements.txt --force-reinstall
 - **Address**: 123 Smart Home Street, Tech Park, Hyderabad, Telangana 500032, India
 
 ### Social Media
-- YouTube: [Link]
-- LinkedIn: [Link]
-- Facebook: [Link]
-- Instagram: [Link]
-- WhatsApp: +91 9550509490
-- Twitter/X: [Link]
+- **YouTube**: [Link]
+- **LinkedIn**: [Link]
+- **Facebook**: [Link]
+- **Instagram**: [Link]
+- **WhatsApp**: +91 9550509490
+- **Twitter/X**: [Link]
 
 ---
 
@@ -590,14 +673,113 @@ pip install -r requirements.txt --force-reinstall
 
 ---
 
-## 📝 Notes
+## 📝 TODO
 
-- This is a production-ready application with mock data
-- For actual deployment, connect to a real MongoDB instance with proper data
-- Update environment variables for production use
-- Implement proper authentication and authorization as needed
-- Add proper error handling and logging
-- Set up monitoring and analytics
+### High Priority
+
+#### Individual Product Page Enhancements
+- [ ] Implement image carousel/slider with 3-5 product images
+- [ ] Add multiple angle product photography
+- [ ] Create color variation selector (if applicable)
+- [ ] Add detailed specifications table
+- [ ] Implement zoom functionality for product images
+- [ ] Add "Related Products" section
+- [ ] Include customer reviews/testimonials section
+
+#### Contact Page Refinements
+- [ ] Add form validation with better error messages
+- [ ] Implement email service integration (SendGrid/AWS SES)
+- [ ] Add Google Maps integration for office location
+- [ ] Create success confirmation page after form submission
+- [ ] Add file upload for project requirements/blueprints
+- [ ] Implement form auto-save to prevent data loss
+
+#### Backend Integration
+- [ ] Connect contact form to MongoDB
+- [ ] Create API endpoints for form submissions
+- [ ] Implement email notification system
+- [ ] Add admin dashboard for inquiry management
+- [ ] Create API for product management (CRUD operations)
+- [ ] Add analytics tracking
+
+### Medium Priority
+
+#### Responsive Testing & Optimization
+- [ ] Comprehensive testing on various mobile devices
+- [ ] Test on tablets (iPad, Android tablets)
+- [ ] Cross-browser testing (Chrome, Firefox, Safari, Edge)
+- [ ] Performance optimization for mobile networks
+- [ ] Image lazy loading implementation
+- [ ] Progressive Web App (PWA) features
+
+#### Theme & Design
+- [ ] Implement alternative color schemes (Teal, Purple, Emerald, Orange)
+- [ ] Add theme customization option in settings
+- [ ] Create print-friendly styles for product pages
+- [ ] Add animations for page transitions
+- [ ] Implement skeleton loaders for better UX
+
+#### SEO & Marketing
+- [ ] Add meta tags for all pages
+- [ ] Implement Open Graph tags for social sharing
+- [ ] Create sitemap.xml
+- [ ] Add robots.txt
+- [ ] Implement structured data (JSON-LD)
+- [ ] Add Google Analytics integration
+- [ ] Create blog section for content marketing
+
+### Low Priority
+
+#### Additional Features
+- [ ] Multi-language support (Hindi, Telugu, etc.)
+- [ ] Currency conversion for international clients
+- [ ] Product comparison tool
+- [ ] Wishlist/favorites functionality
+- [ ] Share products on social media
+- [ ] Video demonstrations for products
+- [ ] 3D product viewer
+- [ ] AR try-before-you-buy feature
+- [ ] Live chat integration
+- [ ] FAQ section with search
+
+#### Admin Panel
+- [ ] Dashboard for managing products
+- [ ] Inquiry management system
+- [ ] Analytics and reporting
+- [ ] User management
+- [ ] Content management system
+- [ ] Inventory tracking
+
+#### Testing & Documentation
+- [ ] Unit tests for components
+- [ ] Integration tests for APIs
+- [ ] E2E tests with Playwright/Cypress
+- [ ] API documentation with examples
+- [ ] Component storybook
+- [ ] User guide/documentation
+
+### Future Enhancements
+
+- [ ] Customer portal for tracking installations
+- [ ] Mobile app (React Native)
+- [ ] Voice assistant integration (Alexa, Google Home)
+- [ ] AI-powered recommendation engine
+- [ ] Virtual showroom with 360° views
+- [ ] Installation scheduling system
+- [ ] Payment gateway integration
+- [ ] Customer testimonials with photo galleries
+- [ ] Project portfolio showcase
+- [ ] Partner/dealer portal
+
+---
+
+**Note**: This is a production-ready application currently using mock data. For full deployment:
+1. Connect to production MongoDB instance
+2. Implement backend API endpoints for all features
+3. Set up proper authentication and authorization
+4. Add comprehensive error handling and logging
+5. Set up monitoring and analytics
+6. Implement backup and disaster recovery
 
 ---
 
