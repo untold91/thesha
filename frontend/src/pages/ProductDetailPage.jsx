@@ -13,11 +13,11 @@ const ProductDetailPage = () => {
 
   if (!product) {
     return (
-      <div className="min-h-screen pt-16 flex items-center justify-center">
+      <div className="min-h-screen pt-16 flex items-center justify-center bg-white dark:bg-black">
         <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4 text-gray-900 dark:text-foreground">Product Not Found</h1>
+          <h1 className="text-4xl font-bold mb-4 text-black dark:text-white">Product Not Found</h1>
           <Link to="/products">
-            <Button className="bg-blue-600 hover:bg-blue-700">
+            <Button className="bg-black dark:bg-white text-white dark:text-black hover:bg-black/80 dark:hover:bg-white/80">
               Back to Products
             </Button>
           </Link>
@@ -27,14 +27,15 @@ const ProductDetailPage = () => {
   }
 
   return (
-    <div className="min-h-screen pt-16 bg-white dark:bg-background">
+    <div className="min-h-screen pt-16 bg-white dark:bg-black" data-testid="product-detail-page">
       {/* Back Button */}
-      <div className="border-b border-gray-200 dark:border-border">
+      <div className="border-b border-black/10 dark:border-white/10">
         <div className="container mx-auto px-4 lg:px-8 py-4">
           <Button
             variant="ghost"
             onClick={() => navigate('/products')}
-            className="flex items-center gap-2 text-gray-600 dark:text-muted-foreground hover:text-blue-600 dark:hover:text-blue-500"
+            className="flex items-center gap-2 text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white"
+            data-testid="back-to-products-button"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Products
@@ -49,8 +50,8 @@ const ProductDetailPage = () => {
             {/* Product Images */}
             <div className="space-y-4">
               {/* Main Image */}
-              <div className="relative h-[500px] bg-gradient-to-br from-gray-100 to-gray-200 dark:from-muted/30 dark:to-muted/10 rounded-2xl flex items-center justify-center overflow-hidden border-2 border-gray-200 dark:border-border">
-                <div className="text-9xl text-gray-400 dark:text-muted-foreground/50">
+              <div className="relative h-[500px] bg-black/5 dark:bg-white/5 rounded-2xl flex items-center justify-center overflow-hidden border-2 border-black/10 dark:border-white/10">
+                <div className="text-9xl text-black/20 dark:text-white/20">
                   {product.name.charAt(0)}
                 </div>
               </div>
@@ -58,8 +59,8 @@ const ProductDetailPage = () => {
               {/* Thumbnail Images */}
               <div className="grid grid-cols-4 gap-4">
                 {[1, 2, 3, 4].map((index) => (
-                  <div key={index} className="relative h-24 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-muted/30 dark:to-muted/10 rounded-lg flex items-center justify-center border-2 border-gray-200 dark:border-border hover:border-blue-500 dark:hover:border-blue-500 cursor-pointer transition-all">
-                    <div className="text-2xl text-gray-400 dark:text-muted-foreground/50">
+                  <div key={index} className="relative h-24 bg-black/5 dark:bg-white/5 rounded-lg flex items-center justify-center border-2 border-black/10 dark:border-white/10 hover:border-black dark:hover:border-white cursor-pointer transition-all">
+                    <div className="text-2xl text-black/20 dark:text-white/20">
                       {product.name.charAt(0)}
                     </div>
                   </div>
@@ -70,26 +71,26 @@ const ProductDetailPage = () => {
             {/* Product Info */}
             <div className="space-y-6">
               <div>
-                <Badge variant="secondary" className="mb-3 bg-blue-50 dark:bg-blue-950/30 text-blue-700 dark:text-blue-400">
+                <Badge variant="secondary" className="mb-3 bg-black/5 dark:bg-white/10 text-black dark:text-white border border-black/20 dark:border-white/20">
                   {product.category}
                 </Badge>
-                <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-foreground">
+                <h1 className="text-4xl md:text-5xl font-bold mb-4 text-black dark:text-white" data-testid="product-detail-title">
                   {product.name}
                 </h1>
-                <p className="text-xl text-gray-600 dark:text-muted-foreground leading-relaxed">
+                <p className="text-xl text-black/70 dark:text-white/70 leading-relaxed">
                   {product.description}
                 </p>
               </div>
 
               {/* Features */}
-              <Card className="border-2 border-gray-100 dark:border-border">
+              <Card className="border-2 border-black/10 dark:border-white/10 bg-white dark:bg-black">
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-foreground">Key Features</h3>
+                  <h3 className="text-xl font-bold mb-4 text-black dark:text-white">Key Features</h3>
                   <div className="space-y-3">
                     {product.features.map((feature, index) => (
                       <div key={index} className="flex items-start space-x-3">
-                        <Check className="w-5 h-5 text-blue-600 dark:text-blue-500 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-700 dark:text-foreground">{feature}</span>
+                        <Check className="w-5 h-5 text-black dark:text-white flex-shrink-0 mt-0.5" />
+                        <span className="text-black/80 dark:text-white/80">{feature}</span>
                       </div>
                     ))}
                   </div>
@@ -97,25 +98,25 @@ const ProductDetailPage = () => {
               </Card>
 
               {/* Specifications */}
-              <Card className="border-2 border-gray-100 dark:border-border">
+              <Card className="border-2 border-black/10 dark:border-white/10 bg-white dark:bg-black">
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-foreground">Specifications</h3>
+                  <h3 className="text-xl font-bold mb-4 text-black dark:text-white">Specifications</h3>
                   <div className="space-y-3">
-                    <div className="flex justify-between py-2 border-b border-gray-200 dark:border-border">
-                      <span className="text-gray-600 dark:text-muted-foreground">Category</span>
-                      <span className="font-medium text-gray-900 dark:text-foreground">{product.category}</span>
+                    <div className="flex justify-between py-2 border-b border-black/10 dark:border-white/10">
+                      <span className="text-black/60 dark:text-white/60">Category</span>
+                      <span className="font-medium text-black dark:text-white">{product.category}</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-200 dark:border-border">
-                      <span className="text-gray-600 dark:text-muted-foreground">Warranty</span>
-                      <span className="font-medium text-gray-900 dark:text-foreground">1 Year</span>
+                    <div className="flex justify-between py-2 border-b border-black/10 dark:border-white/10">
+                      <span className="text-black/60 dark:text-white/60">Warranty</span>
+                      <span className="font-medium text-black dark:text-white">1 Year</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-200 dark:border-border">
-                      <span className="text-gray-600 dark:text-muted-foreground">Support</span>
-                      <span className="font-medium text-gray-900 dark:text-foreground">24/7 Technical</span>
+                    <div className="flex justify-between py-2 border-b border-black/10 dark:border-white/10">
+                      <span className="text-black/60 dark:text-white/60">Support</span>
+                      <span className="font-medium text-black dark:text-white">24/7 Technical</span>
                     </div>
                     <div className="flex justify-between py-2">
-                      <span className="text-gray-600 dark:text-muted-foreground">Installation</span>
-                      <span className="font-medium text-gray-900 dark:text-foreground">Professional</span>
+                      <span className="text-black/60 dark:text-white/60">Installation</span>
+                      <span className="font-medium text-black dark:text-white">Professional</span>
                     </div>
                   </div>
                 </CardContent>
@@ -124,7 +125,7 @@ const ProductDetailPage = () => {
               {/* CTA Button */}
               <div className="pt-4">
                 <Link to="/contact">
-                  <Button size="lg" className="w-full bg-blue-600 hover:bg-blue-700 text-white h-14 text-lg font-semibold">
+                  <Button size="lg" className="w-full bg-black dark:bg-white text-white dark:text-black hover:bg-black/80 dark:hover:bg-white/80 h-14 text-lg font-semibold" data-testid="contact-for-pricing-button">
                     Contact Us for Pricing
                   </Button>
                 </Link>

@@ -29,15 +29,15 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen pt-16" data-testid="contact-page">
       {/* Hero Section */}
-      <section className="py-12 bg-gradient-to-br from-blue-50 to-white dark:from-blue-950/20 dark:to-background">
+      <section className="py-12 bg-white dark:bg-black">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-6xl font-bold mb-4 text-gray-900 dark:text-foreground">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 text-black dark:text-white" data-testid="contact-title">
               Get In Touch
             </h1>
-            <p className="text-xl text-gray-600 dark:text-muted-foreground">
+            <p className="text-xl text-black/70 dark:text-white/70">
               Ready to transform your space? Contact us for a free consultation
             </p>
           </div>
@@ -45,60 +45,60 @@ const ContactPage = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="py-16 bg-white dark:bg-background">
+      <section className="py-16 bg-white dark:bg-black">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {/* Contact Info Cards */}
             <div className="space-y-6">
-              <Card className="border-2 border-gray-100 dark:border-border hover:border-blue-500 dark:hover:border-blue-500 transition-colors duration-300 bg-white dark:bg-card">
+              <Card className="border-2 border-black/10 dark:border-white/10 hover:border-black dark:hover:border-white transition-colors duration-300 bg-white dark:bg-black">
                 <CardHeader>
-                  <div className="w-12 h-12 rounded-lg bg-blue-50 dark:bg-blue-950/30 flex items-center justify-center mb-2">
-                    <Mail className="w-6 h-6 text-blue-600 dark:text-blue-500" />
+                  <div className="w-12 h-12 rounded-lg bg-black/5 dark:bg-white/10 flex items-center justify-center mb-2">
+                    <Mail className="w-6 h-6 text-black dark:text-white" />
                   </div>
-                  <CardTitle className="text-lg text-gray-900 dark:text-foreground">Email Us</CardTitle>
+                  <CardTitle className="text-lg text-black dark:text-white">Email Us</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <a href={`mailto:${mockData.company.email}`} className="text-gray-600 dark:text-muted-foreground hover:text-blue-600 dark:hover:text-blue-500 transition-colors break-all">
+                  <a href={`mailto:${mockData.company.email}`} className="text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white transition-colors break-all" data-testid="contact-email">
                     {mockData.company.email}
                   </a>
                 </CardContent>
               </Card>
 
-              <Card className="border-2 border-gray-100 dark:border-border hover:border-blue-500 dark:hover:border-blue-500 transition-colors duration-300 bg-white dark:bg-card">
+              <Card className="border-2 border-black/10 dark:border-white/10 hover:border-black dark:hover:border-white transition-colors duration-300 bg-white dark:bg-black">
                 <CardHeader>
-                  <div className="w-12 h-12 rounded-lg bg-blue-50 dark:bg-blue-950/30 flex items-center justify-center mb-2">
-                    <Phone className="w-6 h-6 text-blue-600 dark:text-blue-500" />
+                  <div className="w-12 h-12 rounded-lg bg-black/5 dark:bg-white/10 flex items-center justify-center mb-2">
+                    <Phone className="w-6 h-6 text-black dark:text-white" />
                   </div>
-                  <CardTitle className="text-lg text-gray-900 dark:text-foreground">Call Us</CardTitle>
+                  <CardTitle className="text-lg text-black dark:text-white">Call Us</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <a href={`tel:${mockData.company.phone}`} className="text-gray-600 dark:text-muted-foreground hover:text-blue-600 dark:hover:text-blue-500 transition-colors">
+                  <a href={`tel:${mockData.company.phone}`} className="text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white transition-colors" data-testid="contact-phone">
                     {mockData.company.phone}
                   </a>
                 </CardContent>
               </Card>
 
-              <Card className="border-2 border-gray-100 dark:border-border hover:border-blue-500 dark:hover:border-blue-500 transition-colors duration-300 bg-white dark:bg-card">
+              <Card className="border-2 border-black/10 dark:border-white/10 hover:border-black dark:hover:border-white transition-colors duration-300 bg-white dark:bg-black">
                 <CardHeader>
-                  <div className="w-12 h-12 rounded-lg bg-blue-50 dark:bg-blue-950/30 flex items-center justify-center mb-2">
-                    <MapPin className="w-6 h-6 text-blue-600 dark:text-blue-500" />
+                  <div className="w-12 h-12 rounded-lg bg-black/5 dark:bg-white/10 flex items-center justify-center mb-2">
+                    <MapPin className="w-6 h-6 text-black dark:text-white" />
                   </div>
-                  <CardTitle className="text-lg text-gray-900 dark:text-foreground">Visit Us</CardTitle>
+                  <CardTitle className="text-lg text-black dark:text-white">Visit Us</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600 dark:text-muted-foreground">Serving across India</p>
+                  <p className="text-black/70 dark:text-white/70">Serving across India</p>
                 </CardContent>
               </Card>
             </div>
 
             {/* Contact Form */}
             <div className="lg:col-span-2">
-              <Card className="border-2 border-gray-100 dark:border-border bg-white dark:bg-card">
+              <Card className="border-2 border-black/10 dark:border-white/10 bg-white dark:bg-black">
                 <CardHeader>
-                  <CardTitle className="text-2xl text-gray-900 dark:text-foreground">Send us a message</CardTitle>
+                  <CardTitle className="text-2xl text-black dark:text-white">Send us a message</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form onSubmit={handleSubmit} className="space-y-6" data-testid="contact-form">
                     <div>
                       <Input
                         type="text"
@@ -107,7 +107,8 @@ const ContactPage = () => {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="h-12 border-gray-200 dark:border-border focus:border-blue-500 dark:focus:border-blue-500"
+                        className="h-12 border-black/20 dark:border-white/20 focus:border-black dark:focus:border-white"
+                        data-testid="contact-name-input"
                       />
                     </div>
                     <div>
@@ -118,7 +119,8 @@ const ContactPage = () => {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="h-12 border-gray-200 dark:border-border focus:border-blue-500 dark:focus:border-blue-500"
+                        className="h-12 border-black/20 dark:border-white/20 focus:border-black dark:focus:border-white"
+                        data-testid="contact-email-input"
                       />
                     </div>
                     <div>
@@ -129,7 +131,8 @@ const ContactPage = () => {
                         value={formData.phone}
                         onChange={handleChange}
                         required
-                        className="h-12 border-gray-200 dark:border-border focus:border-blue-500 dark:focus:border-blue-500"
+                        className="h-12 border-black/20 dark:border-white/20 focus:border-black dark:focus:border-white"
+                        data-testid="contact-phone-input"
                       />
                     </div>
                     <div>
@@ -140,13 +143,15 @@ const ContactPage = () => {
                         onChange={handleChange}
                         required
                         rows={6}
-                        className="border-gray-200 dark:border-border focus:border-blue-500 dark:focus:border-blue-500"
+                        className="border-black/20 dark:border-white/20 focus:border-black dark:focus:border-white"
+                        data-testid="contact-message-input"
                       />
                     </div>
                     <Button
                       type="submit"
                       size="lg"
-                      className="w-full bg-blue-600 hover:bg-blue-700 text-white h-12 text-lg font-semibold rounded-lg"
+                      className="w-full bg-black dark:bg-white text-white dark:text-black hover:bg-black/80 dark:hover:bg-white/80 h-12 text-lg font-semibold rounded-lg"
+                      data-testid="contact-submit-button"
                     >
                       Send Message
                       <Send className="ml-2 w-5 h-5" />
