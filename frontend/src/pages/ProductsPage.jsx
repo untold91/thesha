@@ -2,7 +2,6 @@ import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Search } from 'lucide-react';
 import { Input } from '../components/ui/input';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { mockData } from '../mock';
 
 const ProductsPage = () => {
@@ -28,6 +27,10 @@ const ProductsPage = () => {
     
     return products;
   }, [activeCategory, searchQuery]);
+
+  const handleProductClick = () => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  };
 
   return (
     <div className="min-h-screen pt-16" data-testid="products-page">
@@ -62,21 +65,23 @@ const ProductsPage = () => {
               />
             </div>
 
-            {/* Category Tabs */}
-            <Tabs value={activeCategory} onValueChange={setActiveCategory} className="w-full md:w-auto">
-              <TabsList className="h-11 bg-transparent border-0 gap-4 flex justify-start overflow-x-auto">
-                {categories.map((category) => (
-                  <TabsTrigger
-                    key={category}
-                    value={category}
-                    className="capitalize text-sm font-medium px-4 py-2 data-[state=active]:bg-black data-[state=active]:text-white dark:data-[state=active]:bg-white dark:data-[state=active]:text-black rounded-full transition-all whitespace-nowrap border border-black/20 dark:border-white/20"
-                    data-testid={`category-tab-${category}`}
-                  >
-                    {category === 'all' ? 'All Products' : category}
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-            </Tabs>
+            {/* Category Tabs - Fixed: No scrolling, proper wrapping */}
+            <div className="flex flex-wrap justify-center md:justify-end gap-2">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setActiveCategory(category)}
+                  className={`capitalize text-sm font-medium px-4 py-2 rounded-full transition-all whitespace-nowrap ${
+                    activeCategory === category
+                      ? 'bg-black text-white dark:bg-white dark:text-black'
+                      : 'bg-transparent text-black dark:text-white border border-black/20 dark:border-white/20 hover:bg-black/10 dark:hover:bg-white/10'
+                  }`}
+                  data-testid={`category-tab-${category}`}
+                >
+                  {category === 'all' ? 'All Products' : category}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -90,13 +95,25 @@ const ProductsPage = () => {
                 <Link
                   key={product.id}
                   to={`/products/${product.id}`}
+                  onClick={handleProductClick}
                   className="group block"
                   data-testid={`product-card-${product.id}`}
                 >
                   <div className="relative overflow-hidden rounded-lg border-2 border-black/10 dark:border-white/10 hover:border-black dark:hover:border-white hover:shadow-2xl hover:scale-105 transition-all duration-300 bg-white dark:bg-black">
                     {/* Product Image */}
                     <div className="relative h-80 bg-black/5 dark:bg-white/5 flex items-center justify-center overflow-hidden">
-                      <div className="text-8xl text-black/20 dark:text-white/20 group-hover:scale-110 transition-transform duration-300">
+                      {product.image ? (
+                        <img 
+                          src={product.image} 
+                          alt={product.name}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                          onError={(e) => {
+                            e.target.style.display = 'none';
+                            e.target.nextSibling.style.display = 'flex';
+                          }}
+                        />
+                      ) : null}
+                      <div className={`text-8xl text-black/20 dark:text-white/20 group-hover:scale-110 transition-transform duration-300 ${product.image ? 'hidden' : 'flex'} items-center justify-center absolute inset-0`}>
                         {product.name.charAt(0)}
                       </div>
                       
