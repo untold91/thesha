@@ -2,47 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, ArrowRight, Zap } from 'lucide-react';
 import { Button } from './ui/button';
 import { useNavigate } from 'react-router-dom';
-
-const slides = [
-  {
-    id: 1,
-    title: 'SMART TOUCH PANELS',
-    subtitle: 'Control Everything at Your Fingertips',
-    description: 'Experience convenience and energy savings with intelligent automation',
-    benefits: ['Save up to 30% on energy bills', 'Control from anywhere', 'Voice activated'],
-    image: 'https://images.unsplash.com/photo-1558002038-1055907df827?w=1920&q=80',
-    cta: 'Get Started'
-  },
-  {
-    id: 2,
-    title: 'INTELLIGENT LIGHTING',
-    subtitle: 'Transform Your Space with Smart Light',
-    description: 'Automated lighting that adapts to your lifestyle and saves energy',
-    benefits: ['Mood-based scenes', 'Automated schedules', '80% longer bulb life'],
-    image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1920&q=80',
-    cta: 'Learn More'
-  },
-  {
-    id: 3,
-    title: 'ADVANCED SECURITY',
-    subtitle: 'Your Safety, Our Priority',
-    description: '24/7 monitoring with AI-powered detection and instant alerts',
-    benefits: ['4K crystal clear footage', 'Smart motion detection', 'Remote monitoring'],
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=80',
-    cta: 'Request Demo'
-  }
-];
+import { mockData } from '../mock';
 
 const HeroCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const navigate = useNavigate();
+  const slides = mockData.slides;
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 6000);
     return () => clearInterval(timer);
-  }, []);
+  }, [slides.length]);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -54,7 +26,7 @@ const HeroCarousel = () => {
 
   const scrollToContact = () => {
     navigate('/contact');
-    setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 100);
+    window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
   return (
