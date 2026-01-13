@@ -30,7 +30,7 @@ const SolutionsNew = () => {
             return (
               <div
                 key={solution.id}
-                className="group bg-white dark:bg-black p-8 rounded-lg hover:shadow-2xl transition-all duration-300 border-2 border-black/10 dark:border-white/10 hover:border-black dark:hover:border-white"
+                className="group bg-white dark:bg-black p-8 rounded-lg transition-all duration-300 border-2 border-black/10 dark:border-white/10 hover:border-black dark:hover:border-white hover:shadow-xl dark:hover:shadow-[0_20px_50px_rgba(255,255,255,0.15)]"
               >
                 <div className="w-16 h-16 rounded-full bg-black/5 dark:bg-white/10 flex items-center justify-center mb-6 group-hover:bg-black dark:group-hover:bg-white transition-colors">
                   <Icon className="w-8 h-8 text-black dark:text-white group-hover:text-white dark:group-hover:text-black transition-colors" />
