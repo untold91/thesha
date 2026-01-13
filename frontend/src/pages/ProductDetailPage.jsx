@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Check } from 'lucide-react';
 import { Button } from '../components/ui/button';
@@ -10,6 +10,16 @@ const ProductDetailPage = () => {
   const { productId } = useParams();
   const navigate = useNavigate();
   const product = mockData.products.find(p => p.id === parseInt(productId));
+
+  // Scroll to top on mount
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [productId]);
+
+  const handleContactClick = () => {
+    navigate('/contact');
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  };
 
   if (!product) {
     return (
@@ -51,7 +61,18 @@ const ProductDetailPage = () => {
             <div className="space-y-4">
               {/* Main Image */}
               <div className="relative h-[500px] bg-black/5 dark:bg-white/5 rounded-2xl flex items-center justify-center overflow-hidden border-2 border-black/10 dark:border-white/10">
-                <div className="text-9xl text-black/20 dark:text-white/20">
+                {product.image ? (
+                  <img 
+                    src={product.image} 
+                    alt={product.name}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.nextSibling.style.display = 'flex';
+                    }}
+                  />
+                ) : null}
+                <div className={`text-9xl text-black/20 dark:text-white/20 ${product.image ? 'hidden' : 'flex'} items-center justify-center absolute inset-0`}>
                   {product.name.charAt(0)}
                 </div>
               </div>
@@ -59,10 +80,21 @@ const ProductDetailPage = () => {
               {/* Thumbnail Images */}
               <div className="grid grid-cols-4 gap-4">
                 {[1, 2, 3, 4].map((index) => (
-                  <div key={index} className="relative h-24 bg-black/5 dark:bg-white/5 rounded-lg flex items-center justify-center border-2 border-black/10 dark:border-white/10 hover:border-black dark:hover:border-white cursor-pointer transition-all">
-                    <div className="text-2xl text-black/20 dark:text-white/20">
-                      {product.name.charAt(0)}
-                    </div>
+                  <div key={index} className="relative h-24 bg-black/5 dark:bg-white/5 rounded-lg flex items-center justify-center border-2 border-black/10 dark:border-white/10 hover:border-black dark:hover:border-white cursor-pointer transition-all overflow-hidden">
+                    {product.image ? (
+                      <img 
+                        src={product.image} 
+                        alt={`${product.name} view ${index}`}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                        }}
+                      />
+                    ) : (
+                      <div className="text-2xl text-black/20 dark:text-white/20">
+                        {product.name.charAt(0)}
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
@@ -102,33 +134,47 @@ const ProductDetailPage = () => {
                 <CardContent className="p-6">
                   <h3 className="text-xl font-bold mb-4 text-black dark:text-white">Specifications</h3>
                   <div className="space-y-3">
-                    <div className="flex justify-between py-2 border-b border-black/10 dark:border-white/10">
-                      <span className="text-black/60 dark:text-white/60">Category</span>
-                      <span className="font-medium text-black dark:text-white">{product.category}</span>
-                    </div>
-                    <div className="flex justify-between py-2 border-b border-black/10 dark:border-white/10">
-                      <span className="text-black/60 dark:text-white/60">Warranty</span>
-                      <span className="font-medium text-black dark:text-white">1 Year</span>
-                    </div>
-                    <div className="flex justify-between py-2 border-b border-black/10 dark:border-white/10">
-                      <span className="text-black/60 dark:text-white/60">Support</span>
-                      <span className="font-medium text-black dark:text-white">24/7 Technical</span>
-                    </div>
-                    <div className="flex justify-between py-2">
-                      <span className="text-black/60 dark:text-white/60">Installation</span>
-                      <span className="font-medium text-black dark:text-white">Professional</span>
-                    </div>
+                    {product.specifications ? (
+                      product.specifications.map((spec, index) => (
+                        <div key={index} className={`flex justify-between py-2 ${index < product.specifications.length - 1 ? 'border-b border-black/10 dark:border-white/10' : ''}`}>
+                          <span className="text-black/60 dark:text-white/60">{spec.key}</span>
+                          <span className="font-medium text-black dark:text-white">{spec.value}</span>
+                        </div>
+                      ))
+                    ) : (
+                      <>
+                        <div className="flex justify-between py-2 border-b border-black/10 dark:border-white/10">
+                          <span className="text-black/60 dark:text-white/60">Category</span>
+                          <span className="font-medium text-black dark:text-white">{product.category}</span>
+                        </div>
+                        <div className="flex justify-between py-2 border-b border-black/10 dark:border-white/10">
+                          <span className="text-black/60 dark:text-white/60">Warranty</span>
+                          <span className="font-medium text-black dark:text-white">1 Year</span>
+                        </div>
+                        <div className="flex justify-between py-2 border-b border-black/10 dark:border-white/10">
+                          <span className="text-black/60 dark:text-white/60">Support</span>
+                          <span className="font-medium text-black dark:text-white">24/7 Technical</span>
+                        </div>
+                        <div className="flex justify-between py-2">
+                          <span className="text-black/60 dark:text-white/60">Installation</span>
+                          <span className="font-medium text-black dark:text-white">Professional</span>
+                        </div>
+                      </>
+                    )}
                   </div>
                 </CardContent>
               </Card>
 
               {/* CTA Button */}
               <div className="pt-4">
-                <Link to="/contact">
-                  <Button size="lg" className="w-full bg-black dark:bg-white text-white dark:text-black hover:bg-black/80 dark:hover:bg-white/80 h-14 text-lg font-semibold" data-testid="contact-for-pricing-button">
-                    Contact Us for Pricing
-                  </Button>
-                </Link>
+                <Button 
+                  size="lg" 
+                  onClick={handleContactClick}
+                  className="w-full bg-black dark:bg-white text-white dark:text-black hover:bg-black/80 dark:hover:bg-white/80 h-14 text-lg font-semibold" 
+                  data-testid="contact-for-pricing-button"
+                >
+                  Contact Us for Pricing
+                </Button>
               </div>
             </div>
           </div>
