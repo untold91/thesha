@@ -81,34 +81,34 @@ const ProductSelector = ({ onClose }) => {
     
     return (
       <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-        <Card className="max-w-2xl w-full bg-white dark:bg-gray-800 shadow-2xl">
-          <CardHeader className="border-b border-gray-200 dark:border-gray-700">
+        <Card className="max-w-2xl w-full bg-white dark:bg-black shadow-2xl border-2 border-black/20 dark:border-white/20">
+          <CardHeader className="border-b border-black/10 dark:border-white/10">
             <div className="flex items-center justify-between">
-              <CardTitle className="text-2xl text-gray-900 dark:text-gray-100">
+              <CardTitle className="text-2xl text-black dark:text-white">
                 Your Personalized Recommendation
               </CardTitle>
-              <Button variant="ghost" size="icon" onClick={handleCancel}>
+              <Button variant="ghost" size="icon" onClick={handleCancel} data-testid="selector-close-button">
                 <X className="w-5 h-5" />
               </Button>
             </div>
           </CardHeader>
           <CardContent className="p-6 space-y-6">
             <div className="text-center">
-              <h3 className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">
+              <h3 className="text-3xl font-bold text-black dark:text-white mb-2">
                 {recommendation.title}
               </h3>
-              <p className="text-gray-600 dark:text-gray-300">
+              <p className="text-black/70 dark:text-white/70">
                 {recommendation.description}
               </p>
             </div>
 
-            <div className="bg-blue-50 dark:bg-blue-950/20 p-6 rounded-lg">
-              <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-4">Recommended Package Includes:</h4>
+            <div className="bg-black/5 dark:bg-white/10 p-6 rounded-lg">
+              <h4 className="font-semibold text-black dark:text-white mb-4">Recommended Package Includes:</h4>
               <div className="space-y-3">
                 {recommendation.products.map((product, index) => (
                   <div key={index} className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0" />
-                    <span className="text-gray-700 dark:text-gray-200">{product}</span>
+                    <CheckCircle className="w-5 h-5 text-black dark:text-white flex-shrink-0" />
+                    <span className="text-black/80 dark:text-white/80">{product}</span>
                   </div>
                 ))}
               </div>
@@ -117,7 +117,8 @@ const ProductSelector = ({ onClose }) => {
             <div className="flex flex-col sm:flex-row gap-3">
               <Button 
                 onClick={() => { navigate('/contact'); handleCancel(); }} 
-                className="flex-1 bg-blue-600 hover:bg-blue-700 h-12 text-lg"
+                className="flex-1 bg-black dark:bg-white text-white dark:text-black hover:bg-black/80 dark:hover:bg-white/80 h-12 text-lg"
+                data-testid="selector-request-demo-button"
               >
                 Request a Demo
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -125,7 +126,8 @@ const ProductSelector = ({ onClose }) => {
               <Button 
                 onClick={resetSelector} 
                 variant="outline" 
-                className="flex-1 h-12"
+                className="flex-1 h-12 border-2 border-black dark:border-white text-black dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
+                data-testid="selector-start-over-button"
               >
                 Start Over
               </Button>
@@ -140,16 +142,16 @@ const ProductSelector = ({ onClose }) => {
 
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <Card className="max-w-2xl w-full bg-white dark:bg-gray-800 shadow-2xl">
-        <CardHeader className="border-b border-gray-200 dark:border-gray-700">
+      <Card className="max-w-2xl w-full bg-white dark:bg-black shadow-2xl border-2 border-black/20 dark:border-white/20">
+        <CardHeader className="border-b border-black/10 dark:border-white/10">
           <div className="flex justify-between items-center mb-2">
-            <span className="text-sm text-gray-600 dark:text-gray-400">Step {step + 1} of {questions.length}</span>
-            <Button variant="ghost" size="sm" onClick={handleCancel}>
+            <span className="text-sm text-black/60 dark:text-white/60">Step {step + 1} of {questions.length}</span>
+            <Button variant="ghost" size="sm" onClick={handleCancel} data-testid="selector-cancel-button">
               <X className="w-4 h-4 mr-2" />
               Cancel
             </Button>
           </div>
-          <CardTitle className="text-2xl text-gray-900 dark:text-gray-100">
+          <CardTitle className="text-2xl text-black dark:text-white">
             {currentQuestion.question}
           </CardTitle>
         </CardHeader>
@@ -161,22 +163,23 @@ const ProductSelector = ({ onClose }) => {
                 <button
                   key={option.id}
                   onClick={() => handleSelect(step, option.id)}
-                  className="flex items-start gap-4 p-4 border-2 border-gray-200 dark:border-gray-700 rounded-lg hover:border-blue-500 dark:hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/20 transition-all text-left group"
+                  className="flex items-start gap-4 p-4 border-2 border-black/20 dark:border-white/20 rounded-lg hover:border-black dark:hover:border-white hover:bg-black/5 dark:hover:bg-white/10 transition-all text-left group"
+                  data-testid={`selector-option-${option.id}`}
                 >
                   {Icon && (
-                    <div className="w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0 group-hover:bg-blue-200 dark:group-hover:bg-blue-900/50 transition-colors">
-                      <Icon className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                    <div className="w-12 h-12 rounded-lg bg-black/5 dark:bg-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-black dark:group-hover:bg-white transition-colors">
+                      <Icon className="w-6 h-6 text-black dark:text-white group-hover:text-white dark:group-hover:text-black transition-colors" />
                     </div>
                   )}
                   <div className="flex-1">
-                    <div className="font-semibold text-gray-900 dark:text-gray-100 mb-1">
+                    <div className="font-semibold text-black dark:text-white mb-1">
                       {option.label}
                     </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-300">
+                    <div className="text-sm text-black/60 dark:text-white/60">
                       {option.desc}
                     </div>
                   </div>
-                  <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" />
+                  <ArrowRight className="w-5 h-5 text-black/40 dark:text-white/40 group-hover:text-black dark:group-hover:text-white transition-colors" />
                 </button>
               );
             })}

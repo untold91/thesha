@@ -57,13 +57,13 @@ const TailoredScenarios = () => {
   const Icon = activeScenario.icon;
 
   return (
-    <section id="scenarios" className="py-20 bg-white dark:bg-gray-800">
+    <section id="scenarios" className="py-20 bg-black dark:bg-white">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white dark:text-black">
             Tailored Solutions
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300">
+          <p className="text-lg text-white/70 dark:text-black/70">
             Smart automation designed for every space
           </p>
         </div>
@@ -71,14 +71,14 @@ const TailoredScenarios = () => {
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           {/* Updated TabsList to show only 3 centered items */}
           <div className="flex justify-center mb-8">
-            <TabsList className="inline-grid grid-cols-3 gap-2 h-auto bg-gray-100 dark:bg-gray-700 p-2 rounded-lg">
+            <TabsList className="inline-grid grid-cols-3 gap-2 h-auto bg-white/10 dark:bg-black/10 p-2 rounded-lg">
               {scenarios.map((scenario) => {
                 const ScenarioIcon = scenario.icon;
                 return (
                   <TabsTrigger
                     key={scenario.id}
                     value={scenario.id}
-                    className="flex flex-col items-center gap-2 py-4 px-8 data-[state=active]:bg-blue-600 data-[state=active]:text-white rounded-md transition-all"
+                    className="flex flex-col items-center gap-2 py-4 px-8 text-white/70 dark:text-black/70 data-[state=active]:bg-white data-[state=active]:text-black dark:data-[state=active]:bg-black dark:data-[state=active]:text-white rounded-md transition-all"
                   >
                     <ScenarioIcon className="w-6 h-6" />
                     <span className="text-sm font-medium">{scenario.label}</span>
@@ -93,7 +93,7 @@ const TailoredScenarios = () => {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 {/* Image */}
                 <div className="order-2 lg:order-1">
-                  <div className="relative rounded-2xl overflow-hidden shadow-2xl h-96">
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl h-96 border-2 border-white/20 dark:border-black/20">
                     <img
                       src={scenario.image}
                       alt={scenario.title}
@@ -106,21 +106,21 @@ const TailoredScenarios = () => {
                 {/* Content */}
                 <div className="order-1 lg:order-2">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
-                      <Icon className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                    <div className="w-12 h-12 rounded-lg bg-white/10 dark:bg-black/10 flex items-center justify-center">
+                      <Icon className="w-6 h-6 text-white dark:text-black" />
                     </div>
-                    <h3 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+                    <h3 className="text-3xl font-bold text-white dark:text-black">
                       {scenario.title}
                     </h3>
                   </div>
-                  <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+                  <p className="text-lg text-white/70 dark:text-black/70 mb-8 leading-relaxed">
                     {scenario.description}
                   </p>
                   <div className="space-y-3">
                     {scenario.features.map((feature, index) => (
                       <div key={index} className="flex items-center gap-3">
-                        <div className="w-2 h-2 rounded-full bg-blue-600"></div>
-                        <span className="text-gray-700 dark:text-gray-200">{feature}</span>
+                        <div className="w-2 h-2 rounded-full bg-white dark:bg-black"></div>
+                        <span className="text-white/90 dark:text-black/90">{feature}</span>
                       </div>
                     ))}
                   </div>

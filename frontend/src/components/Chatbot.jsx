@@ -79,8 +79,9 @@ const Chatbot = () => {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 z-50 w-16 h-16 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110"
+          className="fixed bottom-6 right-6 z-50 w-16 h-16 bg-black dark:bg-white hover:bg-black/80 dark:hover:bg-white/80 text-white dark:text-black rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110"
           aria-label="Open chat"
+          data-testid="chatbot-open-button"
         >
           <MessageCircle className="w-7 h-7" />
         </button>
@@ -88,17 +89,17 @@ const Chatbot = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <Card className="fixed bottom-6 right-6 z-50 w-96 h-[500px] shadow-2xl border-2 border-gray-200 dark:border-gray-700 flex flex-col bg-white dark:bg-gray-800">
-          <CardHeader className="flex flex-row items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700 bg-blue-600 text-white rounded-t-lg">
+        <Card className="fixed bottom-6 right-6 z-50 w-96 h-[500px] shadow-2xl border-2 border-black/20 dark:border-white/20 flex flex-col bg-white dark:bg-black" data-testid="chatbot-window">
+          <CardHeader className="flex flex-row items-center justify-between p-4 border-b border-black/10 dark:border-white/10 bg-black dark:bg-white text-white dark:text-black rounded-t-lg">
             <CardTitle className="text-lg font-semibold flex items-center gap-2">
               <MessageCircle className="w-5 h-5" />
               Smart Home Assistant
             </CardTitle>
             <div className="flex gap-2">
-              <button onClick={() => setIsOpen(false)} className="hover:bg-blue-700 p-1 rounded transition-colors">
+              <button onClick={() => setIsOpen(false)} className="hover:bg-white/20 dark:hover:bg-black/20 p-1 rounded transition-colors">
                 <Minimize2 className="w-5 h-5" />
               </button>
-              <button onClick={() => setIsOpen(false)} className="hover:bg-blue-700 p-1 rounded transition-colors">
+              <button onClick={() => setIsOpen(false)} className="hover:bg-white/20 dark:hover:bg-black/20 p-1 rounded transition-colors">
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -109,8 +110,8 @@ const Chatbot = () => {
               <div key={index} className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}>
                 <div className={`max-w-[80%] p-3 rounded-lg ${
                   msg.type === 'user' 
-                    ? 'bg-blue-600 text-white' 
-                    : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100'
+                    ? 'bg-black dark:bg-white text-white dark:text-black' 
+                    : 'bg-black/5 dark:bg-white/10 text-black dark:text-white'
                 }`}>
                   {msg.text}
                 </div>
@@ -124,7 +125,8 @@ const Chatbot = () => {
                   <button
                     key={resp.action}
                     onClick={() => handleQuickResponse(resp.action)}
-                    className="text-sm px-3 py-2 border border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-950/30 transition-colors"
+                    className="text-sm px-3 py-2 border-2 border-black dark:border-white text-black dark:text-white rounded-lg hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
+                    data-testid={`chatbot-quick-${resp.action}`}
                   >
                     {resp.label}
                   </button>
@@ -133,16 +135,17 @@ const Chatbot = () => {
             )}
           </CardContent>
 
-          <div className="p-4 border-t border-gray-200 dark:border-gray-700">
+          <div className="p-4 border-t border-black/10 dark:border-white/10">
             <div className="flex gap-2">
               <Input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleSend()}
                 placeholder="Type your message..."
-                className="flex-1"
+                className="flex-1 border-black/20 dark:border-white/20"
+                data-testid="chatbot-input"
               />
-              <Button onClick={handleSend} className="bg-blue-600 hover:bg-blue-700">
+              <Button onClick={handleSend} className="bg-black dark:bg-white text-white dark:text-black hover:bg-black/80 dark:hover:bg-white/80" data-testid="chatbot-send-button">
                 <Send className="w-4 h-4" />
               </Button>
             </div>
