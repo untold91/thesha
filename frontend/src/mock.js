@@ -9,13 +9,16 @@ const commonSpecs = [
 const controlPanelFeatures = ['WiFi/Zigbee Enabled', 'Capacitive Touch', 'Customizable Icons', 'Scene Control'];
 const insetModuleFeatures = ['WiFi/Zigbee Enabled', 'Easy Installation', 'Voice Control', 'App Integration'];
 
-// Helper function to convert Google Drive share links to direct image URLs
-const getGoogleDriveImageUrl = (shareUrl) => {
-  const match = shareUrl.match(/\/d\/([a-zA-Z0-9_-]+)/);
-  if (match) {
-    return `https://drive.google.com/uc?export=view&id=${match[1]}`;
-  }
-  return shareUrl;
+// Product images using Unsplash
+const productImages = {
+  panel1: 'https://images.unsplash.com/photo-1655194827229-a1d3192b533e?w=800&q=80',
+  panel2: 'https://images.unsplash.com/photo-1631016042018-448c284aa279?w=800&q=80',
+  panel3: 'https://images.unsplash.com/photo-1581431019684-bfd38511b924?w=800&q=80',
+  panel4: 'https://images.unsplash.com/photo-1655194826649-33a197c6cb2f?w=800&q=80',
+  panel5: 'https://images.unsplash.com/photo-1717323454555-f053c31ff4b4?w=800&q=80',
+  panel6: 'https://images.unsplash.com/photo-1558002038-1055907df827?w=800&q=80',
+  module1: 'https://images.unsplash.com/photo-1762329406809-e46415e6974e?w=800&q=80',
+  module2: 'https://images.unsplash.com/photo-1763372278600-fd0b0997a7b8?w=800&q=80',
 };
 
 export const mockData = {
@@ -117,7 +120,7 @@ export const mockData = {
     {
       id: 1,
       name: 'Senses 4',
-      image: getGoogleDriveImageUrl('https://drive.google.com/file/d/1Pzx7r9UuS6VQpPaAvk_k39yuZSVamxcf/view?usp=sharing'),
+      image: productImages.panel1,
       category: 'Control Panels',
       description: 'Premium glass touch panel with capacitive technology',
       features: controlPanelFeatures,
@@ -133,7 +136,7 @@ export const mockData = {
     {
       id: 2,
       name: 'Senses 4 Plus',
-      image: getGoogleDriveImageUrl('https://drive.google.com/file/d/1DXjyZLQGDlzELO79OWzJW9lAxi_QeovU/view?usp=sharing'),
+      image: productImages.panel2,
       category: 'Control Panels',
       description: 'Premium glass touch panel with capacitive technology',
       features: controlPanelFeatures,
@@ -149,7 +152,7 @@ export const mockData = {
     {
       id: 3,
       name: 'Senses 8',
-      image: getGoogleDriveImageUrl('https://drive.google.com/file/d/1P9y5eJs-XkqpUv-q22MMmPcPZtcommmE/view?usp=sharing'),
+      image: productImages.panel3,
       category: 'Control Panels',
       description: 'Premium glass touch panel with capacitive technology',
       features: controlPanelFeatures,
@@ -165,7 +168,7 @@ export const mockData = {
     {
       id: 4,
       name: 'Senses 8 Plus',
-      image: getGoogleDriveImageUrl('https://drive.google.com/file/d/12m9HO0zY1UOIhi8V-8IUpdeYd8YVUUfd/view?usp=sharing'),
+      image: productImages.panel4,
       category: 'Control Panels',
       description: 'Premium glass touch panel with capacitive technology',
       features: controlPanelFeatures,
@@ -181,7 +184,7 @@ export const mockData = {
     {
       id: 5,
       name: 'Senses 10',
-      image: getGoogleDriveImageUrl('https://drive.google.com/file/d/18zfEvuiqlerQckxESxuPbneozf7l65So/view?usp=sharing'),
+      image: productImages.panel5,
       category: 'Control Panels',
       description: 'Premium glass touch panel with capacitive technology',
       features: controlPanelFeatures,
@@ -197,7 +200,7 @@ export const mockData = {
     {
       id: 6,
       name: 'Senses 10 Plus',
-      image: getGoogleDriveImageUrl('https://drive.google.com/file/d/1mbYOdg5yyQ0ba6CfSGJmuF26YqIOaClX/view?usp=sharing'),
+      image: productImages.panel6,
       category: 'Control Panels',
       description: 'Premium glass touch panel with capacitive technology',
       features: controlPanelFeatures,
@@ -213,7 +216,7 @@ export const mockData = {
     {
       id: 7,
       name: 'Node 3R',
-      image: getGoogleDriveImageUrl('https://drive.google.com/file/d/1rTmZYYNS8wCf3eu4DQw280sDCK9sBjlZ/view?usp=sharing'),
+      image: productImages.module1,
       category: 'Control Modules',
       description: 'Compact modules for retrofit installations',
       features: insetModuleFeatures,
@@ -228,7 +231,7 @@ export const mockData = {
     {
       id: 8,
       name: 'Node DIM',
-      image: getGoogleDriveImageUrl('https://drive.google.com/file/d/1rTmZYYNS8wCf3eu4DQw280sDCK9sBjlZ/view?usp=sharing'),
+      image: productImages.module2,
       category: 'Control Modules',
       description: 'Compact modules for retrofit installations',
       features: insetModuleFeatures,
@@ -243,7 +246,7 @@ export const mockData = {
     {
       id: 9,
       name: 'Node FAN',
-      image: getGoogleDriveImageUrl('https://drive.google.com/file/d/1rTmZYYNS8wCf3eu4DQw280sDCK9sBjlZ/view?usp=sharing'),
+      image: productImages.module1,
       category: 'Control Modules',
       description: 'Compact modules for retrofit installations',
       features: insetModuleFeatures,
@@ -258,7 +261,7 @@ export const mockData = {
     {
       id: 10,
       name: 'Node CUR',
-      image: getGoogleDriveImageUrl('https://drive.google.com/file/d/1rTmZYYNS8wCf3eu4DQw280sDCK9sBjlZ/view?usp=sharing'),
+      image: productImages.module2,
       category: 'Control Modules',
       description: 'Compact modules for retrofit installations',
       features: insetModuleFeatures,
