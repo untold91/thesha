@@ -107,8 +107,9 @@ const HeroCarousel = () => {
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
                   <Button
                     size="lg"
-                    className="group px-8 py-6 text-lg font-semibold bg-white hover:bg-gray-100 text-black transition-all duration-300 shadow-lg hover:shadow-xl"
+                    className="group px-8 py-6 text-lg font-semibold bg-white hover:bg-white/90 text-black transition-all duration-300 shadow-lg hover:shadow-xl"
                     onClick={scrollToContact}
+                    data-testid="hero-cta-button"
                   >
                     {slide.cta}
                     <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -118,6 +119,7 @@ const HeroCarousel = () => {
                     variant="outline"
                     className="px-8 py-6 text-lg font-semibold border-2 border-white text-white hover:bg-white hover:text-black transition-all duration-300"
                     onClick={() => navigate('/products')}
+                    data-testid="hero-view-products-button"
                   >
                     View Products
                   </Button>
