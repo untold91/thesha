@@ -44,7 +44,7 @@ const AboutPage = () => {
                 <strong>Mahadeva Systems</strong>, under our brand <strong>Sha</strong>, is dedicated to transforming homes and offices into intelligent, connected spaces. We specialize in providing comprehensive smart home automation solutions that combine cutting-edge technology with user-friendly design.
               </p>
               <p className="text-lg text-black/80 dark:text-white/80 leading-relaxed">
-                With years of experience in the automation industry, we've helped hundreds of clients across India embrace the future of smart living. Our solutions are tailored to meet the unique needs of residential properties, commercial offices, and hospitality establishments.
+                With years of experience in the automation industry, we&apos;ve helped hundreds of clients across India embrace the future of smart living. Our solutions are tailored to meet the unique needs of residential properties, commercial offices, and hospitality establishments.
               </p>
             </div>
 
