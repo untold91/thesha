@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Input } from '../components/ui/input';
@@ -8,12 +8,30 @@ import { toast } from 'sonner';
 import { mockData } from '../mock';
 
 const ContactPage = () => {
+  const { company } = mockData;
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     message: ''
   });
+
+  // Scroll to top on mount
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, []);
+
+  const formatAddress = () => {
+    const addr = company.address;
+    return (
+      <>
+        {addr.building}, {addr.street},<br />
+        {addr.area}, {addr.city},<br />
+        {addr.state} {addr.zip}, {addr.country}
+      </>
+    );
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -58,8 +76,8 @@ const ContactPage = () => {
                   <CardTitle className="text-lg text-black dark:text-white">Email Us</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <a href={`mailto:${mockData.company.email}`} className="text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white transition-colors break-all" data-testid="contact-email">
-                    {mockData.company.email}
+                  <a href={`mailto:${company.email}`} className="text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white transition-colors break-all" data-testid="contact-email">
+                    {company.email}
                   </a>
                 </CardContent>
               </Card>
@@ -72,8 +90,8 @@ const ContactPage = () => {
                   <CardTitle className="text-lg text-black dark:text-white">Call Us</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <a href={`tel:${mockData.company.phone}`} className="text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white transition-colors" data-testid="contact-phone">
-                    {mockData.company.phone}
+                  <a href={`tel:${company.phone}`} className="text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white transition-colors" data-testid="contact-phone">
+                    {company.phone}
                   </a>
                 </CardContent>
               </Card>
@@ -86,7 +104,7 @@ const ContactPage = () => {
                   <CardTitle className="text-lg text-black dark:text-white">Visit Us</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-black/70 dark:text-white/70">Serving across India</p>
+                  <p className="text-black/70 dark:text-white/70">{formatAddress()}</p>
                 </CardContent>
               </Card>
             </div>
