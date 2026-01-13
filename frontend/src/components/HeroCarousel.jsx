@@ -78,9 +78,9 @@ const HeroCarousel = () => {
             <div className="container mx-auto px-4 lg:px-8">
               <div className="max-w-3xl">
                 {/* Badge */}
-                <div className="inline-flex items-center space-x-2 px-4 py-2 bg-blue-600/20 backdrop-blur-sm border border-blue-500/30 rounded-full mb-6 animate-fade-in">
-                  <Zap className="w-4 h-4 text-blue-400" />
-                  <span className="text-sm font-medium text-blue-300">Smart Living Innovation</span>
+                <div className="inline-flex items-center space-x-2 px-4 py-2 bg-white/20 dark:bg-white/10 backdrop-blur-sm border border-white/30 rounded-full mb-6 animate-fade-in">
+                  <Zap className="w-4 h-4 text-white" />
+                  <span className="text-sm font-medium text-white">Smart Living Innovation</span>
                 </div>
 
                 <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 tracking-tight">
@@ -97,7 +97,7 @@ const HeroCarousel = () => {
                 <div className="space-y-2 mb-8">
                   {slide.benefits.map((benefit, idx) => (
                     <div key={idx} className="flex items-center space-x-2">
-                      <div className="w-2 h-2 rounded-full bg-blue-400"></div>
+                      <div className="w-2 h-2 rounded-full bg-white"></div>
                       <span className="text-white/90">{benefit}</span>
                     </div>
                   ))}
@@ -107,7 +107,7 @@ const HeroCarousel = () => {
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
                   <Button
                     size="lg"
-                    className="group px-8 py-6 text-lg font-semibold bg-blue-600 hover:bg-blue-700 text-white transition-all duration-300 shadow-lg hover:shadow-xl"
+                    className="group px-8 py-6 text-lg font-semibold bg-white hover:bg-gray-100 text-black transition-all duration-300 shadow-lg hover:shadow-xl"
                     onClick={scrollToContact}
                   >
                     {slide.cta}
@@ -116,7 +116,7 @@ const HeroCarousel = () => {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="px-8 py-6 text-lg font-semibold border-2 border-white text-white hover:bg-white hover:text-gray-900 transition-all duration-300"
+                    className="px-8 py-6 text-lg font-semibold border-2 border-white text-white hover:bg-white hover:text-black transition-all duration-300"
                     onClick={() => navigate('/products')}
                   >
                     View Products
@@ -151,7 +151,7 @@ const HeroCarousel = () => {
             key={index}
             onClick={() => setCurrentSlide(index)}
             className={`h-3 rounded-full transition-all ${
-              index === currentSlide ? 'bg-blue-500 w-10' : 'bg-white/50 w-3'
+              index === currentSlide ? 'bg-white w-10' : 'bg-white/50 w-3'
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />

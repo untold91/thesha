@@ -28,18 +28,18 @@ const HomePage = () => {
       <SolutionsNew />
       <TailoredScenarios />
       
-      {/* Product Selector CTA Banner - Moved after Tailored Solutions */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-700 dark:from-blue-700 dark:to-blue-800 py-8">
+      {/* Product Selector CTA Banner - Monochrome */}
+      <div className="bg-black dark:bg-white py-8">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="text-center md:text-left">
-              <h3 className="text-2xl font-bold text-white mb-2">Not sure where to start?</h3>
-              <p className="text-white/90">Let us help you find the perfect smart home solution</p>
+              <h3 className="text-2xl font-bold text-white dark:text-black mb-2">Not sure where to start?</h3>
+              <p className="text-white/90 dark:text-black/90">Let us help you find the perfect smart home solution</p>
             </div>
             <Button 
               size="lg" 
               onClick={() => setShowSelector(true)}
-              className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-6 text-lg font-semibold shadow-lg"
+              className="bg-white dark:bg-black text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900 px-8 py-6 text-lg font-semibold shadow-lg border-2 border-white dark:border-black"
             >
               <Sparkles className="mr-2 w-5 h-5" />
               Find My Solution
