@@ -39,7 +39,8 @@ const HomePage = () => {
             <Button 
               size="lg" 
               onClick={() => setShowSelector(true)}
-              className="bg-white dark:bg-black text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900 px-8 py-6 text-lg font-semibold shadow-lg border-2 border-white dark:border-black"
+              className="bg-white dark:bg-black text-black dark:text-white hover:bg-white/90 dark:hover:bg-black/90 px-8 py-6 text-lg font-semibold shadow-lg border-2 border-white dark:border-black"
+              data-testid="find-my-solution-button"
             >
               <Sparkles className="mr-2 w-5 h-5" />
               Find My Solution
