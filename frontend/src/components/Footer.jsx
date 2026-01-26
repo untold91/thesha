@@ -1,5 +1,6 @@
 import React from 'react';
-import { Mail, Phone, MapPin, Youtube, Linkedin, Facebook, Instagram, Twitter } from 'lucide-react';
+import { Mail, Phone, MapPin } from 'lucide-react';
+import { SiYoutube, SiLinkedin, SiFacebook, SiInstagram, SiX } from '@icons-pack/react-simple-icons';
 import { Link } from 'react-router-dom';
 import { mockData } from '../mock';
 import { useTheme } from './ThemeProvider';
@@ -23,15 +24,17 @@ const Footer = () => {
             <div className="flex items-center space-x-3">
               <img 
                 src={theme === 'dark' 
-                  ? 'https://customer-assets.emergentagent.com/job_homeautomation-2/artifacts/70ax8pqv_noBgBlack.png'
-                  : 'https://customer-assets.emergentagent.com/job_homeautomation-2/artifacts/xu4gxpi2_noBgWhite.png' 
-                } 
+                  ? 'images/title/noBgBlack.png' 
+                  : 'images/title/noBgWhite.png'
+                }
                 alt="Sha by Mahadeva Systems" 
                 className="h-14 w-auto"
               />
-              <div>
-                <div className="text-xs text-white/60 dark:text-black/60">by</div>
-                <div className="text-sm font-semibold">{company.name}</div>
+              <div className="flex items-center border-l-2 h-12 dark:border-black border-white pl-4">
+                <div className="flex flex-col justify-center">
+                  <div className="text-xs text-white/60 dark:text-black/60">by</div>
+                  <div className="text-sm font-semibold">{company.name}</div>
+                </div>
               </div>
             </div>
             <p className="text-sm text-white/70 dark:text-black/70 leading-relaxed">
@@ -99,20 +102,20 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Follow Us</h3>
             <div className="flex flex-wrap gap-3">
-              <a href={socialMedia.youtube} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 dark:bg-black/10 flex items-center justify-center hover:bg-white dark:hover:bg-black hover:text-black dark:hover:text-white transition-all" aria-label="YouTube" data-testid="social-youtube">
-                <Youtube className="w-5 h-5" />
+              <a href={socialMedia.youtube} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/20 dark:bg-black/20 flex items-center justify-center hover:bg-white dark:hover:bg-black hover:text-black dark:hover:text-white transition-all" aria-label="YouTube" data-testid="social-youtube">
+                <SiYoutube className="w-5 h-5" />
               </a>
-              <a href={socialMedia.linkedin} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 dark:bg-black/10 flex items-center justify-center hover:bg-white dark:hover:bg-black hover:text-black dark:hover:text-white transition-all" aria-label="LinkedIn" data-testid="social-linkedin">
-                <Linkedin className="w-5 h-5" />
+              {/* <a href={socialMedia.linkedin} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/20 dark:bg-black/20 flex items-center justify-center hover:bg-white dark:hover:bg-black hover:text-black dark:hover:text-white transition-all" aria-label="LinkedIn" data-testid="social-linkedin">
+                <SiLinkedin className="w-5 h-5" />
+              </a> */}
+              <a href={socialMedia.facebook} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/20 dark:bg-black/20 flex items-center justify-center hover:bg-white dark:hover:bg-black hover:text-black dark:hover:text-white transition-all" aria-label="Facebook" data-testid="social-facebook">
+                <SiFacebook className="w-5 h-5" />
               </a>
-              <a href={socialMedia.facebook} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 dark:bg-black/10 flex items-center justify-center hover:bg-white dark:hover:bg-black hover:text-black dark:hover:text-white transition-all" aria-label="Facebook" data-testid="social-facebook">
-                <Facebook className="w-5 h-5" />
+              <a href={socialMedia.instagram} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/20 dark:bg-black/20 flex items-center justify-center hover:bg-white dark:hover:bg-black hover:text-black dark:hover:text-white transition-all" aria-label="Instagram" data-testid="social-instagram">
+                <SiInstagram className="w-5 h-5" />
               </a>
-              <a href={socialMedia.instagram} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 dark:bg-black/10 flex items-center justify-center hover:bg-white dark:hover:bg-black hover:text-black dark:hover:text-white transition-all" aria-label="Instagram" data-testid="social-instagram">
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a href={socialMedia.twitter} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 dark:bg-black/10 flex items-center justify-center hover:bg-white dark:hover:bg-black hover:text-black dark:hover:text-white transition-all" aria-label="Twitter" data-testid="social-twitter">
-                <Twitter className="w-5 h-5" />
+              <a href={socialMedia.twitter} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/20 dark:bg-black/20 flex items-center justify-center hover:bg-white dark:hover:bg-black hover:text-black dark:hover:text-white transition-all" aria-label="Twitter" data-testid="social-twitter">
+                <SiX className="w-5 h-5" />
               </a>
             </div>
           </div>
