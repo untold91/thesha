@@ -4,6 +4,18 @@ import { Card, CardContent } from './ui/card';
 import { mockData } from '../mock';
 
 const Service = () => {
+  const serviceInfo = {
+    warranty: 'Warranty',
+    description: 'Free support and maintenance, guaranteed for the entire warranty period after installation.',
+    postWarranty: 'Affordable paid service plans available after the free period',
+    features: [
+      'Regular maintenance checks',
+      'Software updates',
+      '24/7 technical support',
+      'Emergency repairs'
+    ]
+  }
+  
   return (
     <section id="service" className="py-20 bg-white dark:bg-black">
       <div className="container mx-auto px-4 lg:px-8">
@@ -24,15 +36,15 @@ const Service = () => {
             <CardContent className="p-8 md:p-12">
               <div className="text-center mb-8">
                 <div className="text-5xl md:text-6xl font-bold text-black dark:text-white mb-2">
-                  {mockData.serviceInfo.warranty}
+                  {serviceInfo.warranty}
                 </div>
                 <p className="text-xl text-black/70 dark:text-white/70">
-                  {mockData.serviceInfo.description}
+                  {serviceInfo.description}
                 </p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-                {mockData.serviceInfo.features.map((feature, index) => (
+                {serviceInfo.features.map((feature, index) => (
                   <div key={index} className="flex items-start space-x-3">
                     <CheckCircle2 className="w-6 h-6 text-black dark:text-white flex-shrink-0 mt-1" />
                     <span className="text-black/80 dark:text-white/80 font-medium">{feature}</span>
@@ -42,7 +54,7 @@ const Service = () => {
 
               <div className="mt-8 pt-8 border-t border-black/10 dark:border-white/10">
                 <p className="text-center text-black/70 dark:text-white/70">
-                  {mockData.serviceInfo.postWarranty}
+                  {serviceInfo.postWarranty}
                 </p>
               </div>
             </CardContent>

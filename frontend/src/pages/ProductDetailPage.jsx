@@ -65,7 +65,7 @@ const ProductDetailPage = () => {
                   <img 
                     src={product.image} 
                     alt={product.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                     onError={(e) => {
                       e.target.style.display = 'none';
                       e.target.nextSibling.style.display = 'flex';
@@ -85,7 +85,7 @@ const ProductDetailPage = () => {
                       <img 
                         src={product.image} 
                         alt={`${product.name} view ${index}`}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
                         onError={(e) => {
                           e.target.style.display = 'none';
                         }}

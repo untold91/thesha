@@ -106,7 +106,7 @@ const ProductsPage = () => {
                         <img 
                           src={product.image} 
                           alt={product.name}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                          className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
                           onError={(e) => {
                             e.target.style.display = 'none';
                             e.target.nextSibling.style.display = 'flex';

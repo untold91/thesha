@@ -11,14 +11,13 @@ const insetModuleFeatures = ['WiFi/Zigbee Enabled', 'Easy Installation', 'Voice 
 
 // Product images using Unsplash
 const productImages = {
-  panel1: 'https://images.unsplash.com/photo-1655194827229-a1d3192b533e?w=800&q=80',
-  panel2: 'https://images.unsplash.com/photo-1631016042018-448c284aa279?w=800&q=80',
-  panel3: 'https://images.unsplash.com/photo-1581431019684-bfd38511b924?w=800&q=80',
-  panel4: 'https://images.unsplash.com/photo-1655194826649-33a197c6cb2f?w=800&q=80',
-  panel5: 'https://images.unsplash.com/photo-1717323454555-f053c31ff4b4?w=800&q=80',
-  panel6: 'https://images.unsplash.com/photo-1558002038-1055907df827?w=800&q=80',
-  module1: 'https://images.unsplash.com/photo-1762329406809-e46415e6974e?w=800&q=80',
-  module2: 'https://images.unsplash.com/photo-1763372278600-fd0b0997a7b8?w=800&q=80',
+  panel1: '/images/products/Senses4.png',
+  panel2: '/images/products/Senses4Plus.png',
+  panel3: '/images/products/Senses8.png',
+  panel4: '/images/products/Senses8Plus.png',
+  panel5: '/images/products/Senses10.png',
+  panel6: '/images/products/Senses10Plus.png',
+  module1: '/images/products/NodeInsertModule.png',
 };
 
 export const mockData = {
@@ -44,6 +43,11 @@ export const mockData = {
       linkedin: 'https://www.linkedin.com/company/mahadeva-systems',
       youtube: 'https://www.youtube.com/@MahadevaSystems',
       twitter: 'https://twitter.com/mahadevasys',
+    },
+    stats: {
+      project_completed: '10+',
+      states_covered: '2',
+      client_satisfaction: '98%',
     }
   },
 
@@ -54,7 +58,7 @@ export const mockData = {
       subtitle: 'Control Everything at Your Fingertips',
       description: 'Experience convenience and energy savings with intelligent automation',
       benefits: ['Save up to 30% on energy bills', 'Control from anywhere', 'Voice activated'],
-      image: 'https://images.unsplash.com/photo-1558002038-1055907df827?w=1920&q=80',
+      image: 'https://article.images.consumerreports.org/image/upload/t_article_tout/v1729260374/prod/content/dam/CRO-Images-2024/Home/CR-Home-Best-Home-Security-Companies-1024',
       cta: 'Get Started'
     },
     {
@@ -71,8 +75,8 @@ export const mockData = {
       title: 'ADVANCED SECURITY',
       subtitle: 'Your Safety, Our Priority',
       description: '24/7 monitoring with AI-powered detection and instant alerts',
-      benefits: ['4K crystal clear footage', 'Smart motion detection', 'Remote monitoring'],
-      image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=80',
+      benefits: ['Crystal clear footage', 'Smart motion detection', 'Remote monitoring'],
+      image: 'https://www.gensecurity.com/hs-fs/hubfs/Blog/Home-Security--How-to-Install-Outdoor-Security-Cameras.jpg?width=1000&name=Home-Security--How-to-Install-Outdoor-Security-Cameras.jpg',
       cta: 'Request Demo'
     }
   ],
@@ -231,7 +235,7 @@ export const mockData = {
     {
       id: 8,
       name: 'Node DIM',
-      image: productImages.module2,
+      image: productImages.module1,
       category: 'Control Modules',
       description: 'Compact modules for retrofit installations',
       features: insetModuleFeatures,
@@ -261,7 +265,7 @@ export const mockData = {
     {
       id: 10,
       name: 'Node CUR',
-      image: productImages.module2,
+      image: productImages.module1,
       category: 'Control Modules',
       description: 'Compact modules for retrofit installations',
       features: insetModuleFeatures,
@@ -274,18 +278,6 @@ export const mockData = {
       ]
     }
   ],
-
-  serviceInfo: {
-    warranty: '1 Year Free Service',
-    description: 'We provide comprehensive support and maintenance for 1 year absolutely free after installation',
-    postWarranty: 'Affordable paid service plans available after the free period',
-    features: [
-      'Regular maintenance checks',
-      'Software updates',
-      '24/7 technical support',
-      'Emergency repairs'
-    ]
-  },
 
   testimonials: [
     {
@@ -310,28 +302,4 @@ export const mockData = {
       rating: 5
     }
   ],
-
-  // Presence data for the India map
-  presence: {
-    states: [
-      { 
-        name: 'Telangana', 
-        status: 'Active Operations',
-        description: 'Headquarters & Primary Service Hub'
-      },
-      { 
-        name: 'Andhra Pradesh', 
-        status: 'Active Operations',
-        description: 'Extended Service Coverage'
-      }
-    ],
-    headquarters: {
-      city: 'Hyderabad',
-      state: 'Telangana'
-    },
-    referencePoint: {
-      city: 'New Delhi',
-      description: 'National Reference Point'
-    }
-  }
 };
