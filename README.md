@@ -701,8 +701,10 @@ pip install -r requirements.txt --force-reinstall
 - ✅ Section 1: Company Story (top)
 - ✅ Section 2: Our Presence Across India (SVG map with Telangana & AP)
 - ✅ Section 3: Values Grid (4 cards with icons)
-- ✅ Section 4: Stats (projects, states, satisfaction)
-- ✅ Section 5: What Our Clients Say (gray box style, white cards, hover effects)
+- ✅ Section 4: Stats + What Our Clients Say (combined section)
+  - Stats card with columns (no hover effect)
+  - Testimonial cards with hover effects (scale, shadow, border)
+  - Consistent gray background styling
 
 #### Product Images
 - ✅ Local product images from `/public/images/products/`
