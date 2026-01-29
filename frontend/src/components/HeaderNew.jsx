@@ -24,6 +24,7 @@ const HeaderNew = () => {
       const sections = ['solutions', 'scenarios'];
       const scrollPosition = window.scrollY + 150; // Offset for header height
 
+      // Check if we're in any of the sections
       for (const sectionId of sections) {
         const element = document.getElementById(sectionId);
         if (element) {
@@ -35,10 +36,8 @@ const HeaderNew = () => {
         }
       }
       
-      // If at the top, no section is active
-      if (window.scrollY < 300) {
-        setActiveSection(null);
-      }
+      // If not in any section, clear activeSection (this will highlight HOME)
+      setActiveSection(null);
     };
 
     window.addEventListener('scroll', handleScroll);
