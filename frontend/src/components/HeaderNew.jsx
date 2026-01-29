@@ -77,7 +77,10 @@ const HeaderNew = () => {
 
   // Check if a nav item is active
   const isActive = (path) => {
-    if (path === '/') return location.pathname === '/';
+    if (path === '/') {
+      // HOME is only active when on homepage AND no section (Solutions/Scenarios) is active
+      return location.pathname === '/' && activeSection === null;
+    }
     return location.pathname.startsWith(path);
   };
 
