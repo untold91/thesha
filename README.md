@@ -72,16 +72,24 @@ Sha is a comprehensive smart home automation platform that showcases:
 #### 📄 **Pages & Navigation**
 - **Home**: Hero carousel, solutions, tailored scenarios, service info, product selector
 - **Products**: Category-filtered product grid with search
-- **Product Detail**: Individual product pages (ready for enhancement)
-- **About**: Company info with interactive India map showing project locations
+- **Product Detail**: Individual product pages with specifications
+- **About**: Redesigned with 5 sections:
+  - Company Story (top)
+  - Our Presence Across India (SVG map with state markers)
+  - Values Grid (4 value cards)
+  - Stats section (projects, states, satisfaction)
+  - What Our Clients Say (testimonials with hover effects)
 - **Contact**: Professional contact form with information cards
 - Smooth scrolling between sections
 - Auto-scroll to top on page navigation
+- Header navigation highlights active section on scroll (Solutions/Scenarios)
 
 #### 🗺️ **Interactive Features**
-- India map with animated location markers
-- Hover tooltips showing project counts per city
-- 8+ major cities coverage visualization
+- SVG-based India map with Telangana & Andhra Pradesh highlighted
+- Interactive state markers with hover effects
+- Testimonial cards with hover animations (scale, shadow, border)
+- Header scroll-based section highlighting
+- Footer quick links with proper navigation from all pages
 
 ### Backend
 - 🚀 **FastAPI**: Modern, fast Python web framework
@@ -670,6 +678,36 @@ pip install -r requirements.txt --force-reinstall
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Shadcn UI](https://ui.shadcn.com/)
 - [Lucide Icons](https://lucide.dev/)
+
+---
+
+## 📝 Changelog
+
+### Latest Updates (January 2025)
+
+#### Header Navigation
+- ✅ Scroll-based highlighting for Solutions/Scenarios sections
+- ✅ Active page highlighting with opposite color theme
+
+#### Footer Quick Links
+- ✅ Fixed Home link to scroll to top on all pages
+- ✅ Fixed Products/About/Contact links to scroll to top after navigation
+- ✅ Fixed Solutions/Scenarios links to navigate and scroll from any page
+
+#### Product Selector
+- ✅ Removed X icon from Cancel button, kept text label
+
+#### About Page Redesign
+- ✅ Section 1: Company Story (top)
+- ✅ Section 2: Our Presence Across India (SVG map with Telangana & AP)
+- ✅ Section 3: Values Grid (4 cards with icons)
+- ✅ Section 4: Stats (projects, states, satisfaction)
+- ✅ Section 5: What Our Clients Say (gray box style, white cards, hover effects)
+
+#### Product Images
+- ✅ Local product images from `/public/images/products/`
+- ✅ Brand logos in `/public/images/logo/`
+- ✅ Dynamic favicons based on theme
 
 ---
 
