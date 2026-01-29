@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, Home, Building2, Briefcase, CheckCircle, X } from 'lucide-react';
+import { ArrowRight, Home, Building2, Briefcase, CheckCircle } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import { useNavigate } from 'react-router-dom';
@@ -87,8 +87,8 @@ const ProductSelector = ({ onClose }) => {
               <CardTitle className="text-2xl text-black dark:text-white">
                 Your Personalized Recommendation
               </CardTitle>
-              <Button variant="ghost" size="icon" onClick={handleCancel} data-testid="selector-close-button">
-                <X className="w-5 h-5" />
+              <Button variant="ghost" size="sm" onClick={handleCancel} data-testid="selector-close-button">
+                Cancel
               </Button>
             </div>
           </CardHeader>
@@ -147,7 +147,6 @@ const ProductSelector = ({ onClose }) => {
           <div className="flex justify-between items-center mb-2">
             <span className="text-sm text-black/60 dark:text-white/60">Step {step + 1} of {questions.length}</span>
             <Button variant="ghost" size="sm" onClick={handleCancel} data-testid="selector-cancel-button">
-              <X className="w-4 h-4 mr-2" />
               Cancel
             </Button>
           </div>

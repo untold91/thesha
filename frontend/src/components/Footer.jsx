@@ -1,7 +1,7 @@
 import React from 'react';
 import { Mail, Phone, MapPin } from 'lucide-react';
-import { SiYoutube, SiLinkedin, SiFacebook, SiInstagram, SiX } from '@icons-pack/react-simple-icons';
-import { Link } from 'react-router-dom';
+import { SiYoutube, SiFacebook, SiInstagram, SiX } from '@icons-pack/react-simple-icons';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { mockData } from '../mock';
 import { useTheme } from './ThemeProvider';
 
@@ -9,10 +9,70 @@ const Footer = () => {
   const { theme } = useTheme();
   const { company } = mockData;
   const socialMedia = company.social_media;
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const formatAddress = () => {
     const addr = company.address;
     return `${addr.building}, ${addr.street}, ${addr.area}, ${addr.city}, ${addr.state} ${addr.zip}, ${addr.country}`;
+  };
+
+  // Handle Home link click - navigate and scroll to top
+  const handleHomeClick = (e) => {
+    e.preventDefault();
+    if (location.pathname === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      navigate('/');
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }, 50);
+    }
+  };
+
+  // Handle Products link click - navigate and scroll to top
+  const handleProductsClick = (e) => {
+    e.preventDefault();
+    navigate('/products');
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }, 50);
+  };
+
+  // Handle About link click - navigate and scroll to top
+  const handleAboutClick = (e) => {
+    e.preventDefault();
+    navigate('/about');
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }, 50);
+  };
+
+  // Handle Contact link click - navigate and scroll to top
+  const handleContactClick = (e) => {
+    e.preventDefault();
+    navigate('/contact');
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }, 50);
+  };
+
+  // Handle Solutions/Scenarios click - navigate to home and scroll to section
+  const handleSectionClick = (sectionId) => {
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
   };
 
   return (
@@ -47,34 +107,34 @@ const Footer = () => {
             <h3 className="text-lg font-semibold">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/" className="text-sm text-white/70 dark:text-black/70 hover:text-white dark:hover:text-black transition-colors" data-testid="footer-home-link">
+                <a href="/" onClick={handleHomeClick} className="text-sm text-white/70 dark:text-black/70 hover:text-white dark:hover:text-black transition-colors cursor-pointer" data-testid="footer-home-link">
                   Home
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to="/products" className="text-sm text-white/70 dark:text-black/70 hover:text-white dark:hover:text-black transition-colors" data-testid="footer-products-link">
+                <a href="/products" onClick={handleProductsClick} className="text-sm text-white/70 dark:text-black/70 hover:text-white dark:hover:text-black transition-colors cursor-pointer" data-testid="footer-products-link">
                   Products
-                </Link>
+                </a>
               </li>
               <li>
-                <button onClick={() => document.getElementById('solutions')?.scrollIntoView({ behavior: 'smooth' })} className="text-sm text-white/70 dark:text-black/70 hover:text-white dark:hover:text-black transition-colors">
+                <button onClick={() => handleSectionClick('solutions')} className="text-sm text-white/70 dark:text-black/70 hover:text-white dark:hover:text-black transition-colors">
                   Solutions
                 </button>
               </li>
               <li>
-                <button onClick={() => document.getElementById('scenarios')?.scrollIntoView({ behavior: 'smooth' })} className="text-sm text-white/70 dark:text-black/70 hover:text-white dark:hover:text-black transition-colors">
+                <button onClick={() => handleSectionClick('scenarios')} className="text-sm text-white/70 dark:text-black/70 hover:text-white dark:hover:text-black transition-colors">
                   Scenarios
                 </button>
               </li>
               <li>
-                <Link to="/about" className="text-sm text-white/70 dark:text-black/70 hover:text-white dark:hover:text-black transition-colors" data-testid="footer-about-link">
+                <a href="/about" onClick={handleAboutClick} className="text-sm text-white/70 dark:text-black/70 hover:text-white dark:hover:text-black transition-colors cursor-pointer" data-testid="footer-about-link">
                   About
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to="/contact" className="text-sm text-white/70 dark:text-black/70 hover:text-white dark:hover:text-black transition-colors" data-testid="footer-contact-link">
+                <a href="/contact" onClick={handleContactClick} className="text-sm text-white/70 dark:text-black/70 hover:text-white dark:hover:text-black transition-colors cursor-pointer" data-testid="footer-contact-link">
                   Contact
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
@@ -105,9 +165,6 @@ const Footer = () => {
               <a href={socialMedia.youtube} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/20 dark:bg-black/20 flex items-center justify-center hover:bg-white dark:hover:bg-black hover:text-black dark:hover:text-white transition-all" aria-label="YouTube" data-testid="social-youtube">
                 <SiYoutube className="w-5 h-5" />
               </a>
-              {/* <a href={socialMedia.linkedin} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/20 dark:bg-black/20 flex items-center justify-center hover:bg-white dark:hover:bg-black hover:text-black dark:hover:text-white transition-all" aria-label="LinkedIn" data-testid="social-linkedin">
-                <SiLinkedin className="w-5 h-5" />
-              </a> */}
               <a href={socialMedia.facebook} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/20 dark:bg-black/20 flex items-center justify-center hover:bg-white dark:hover:bg-black hover:text-black dark:hover:text-white transition-all" aria-label="Facebook" data-testid="social-facebook">
                 <SiFacebook className="w-5 h-5" />
               </a>
