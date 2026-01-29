@@ -314,12 +314,11 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* ===== SECTION 4: Stats & Customer Review Card (Last) ===== */}
+      {/* ===== SECTION 4: Stats ===== */}
       <section className="py-16 bg-black dark:bg-white">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-8 text-center mb-16">
+            <div className="grid grid-cols-3 gap-8 text-center">
               <div>
                 <div className="text-5xl font-bold text-white dark:text-black mb-2">
                   {stats.project_completed}
@@ -345,36 +344,42 @@ const AboutPage = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
 
-            {/* Customer Reviews */}
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-white dark:text-black">
-                What Our Clients Say
-              </h2>
+      {/* ===== SECTION 5: What Our Clients Say ===== */}
+      <section className="py-16 bg-black/5 dark:bg-white/5">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-black dark:text-white">
+              What Our Clients Say
+            </h2>
 
+            <div className="bg-white dark:bg-black p-8 lg:p-12 rounded-3xl border border-black/10 dark:border-white/10 shadow-lg">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {mockData.testimonials.map((testimonial) => (
                   <Card 
                     key={testimonial.id} 
-                    className="bg-white/10 dark:bg-black/10 border border-white/20 dark:border-black/20"
+                    className="bg-white dark:bg-black border-2 border-black/10 dark:border-white/10 hover:border-black dark:hover:border-white hover:shadow-xl hover:scale-[1.02] transition-all duration-300 cursor-default"
                   >
                     <CardContent className="p-6">
-                      <Quote className="w-8 h-8 text-white/40 dark:text-black/40 mb-4" />
-                      <p className="text-white/90 dark:text-black/90 mb-4 leading-relaxed">
+                      <Quote className="w-8 h-8 text-black/30 dark:text-white/30 mb-4" />
+                      <p className="text-black/80 dark:text-white/80 mb-4 leading-relaxed">
                         &ldquo;{testimonial.content}&rdquo;
                       </p>
                       <div className="flex items-center justify-between">
                         <div>
-                          <div className="font-semibold text-white dark:text-black">
+                          <div className="font-semibold text-black dark:text-white">
                             {testimonial.name}
                           </div>
-                          <div className="text-sm text-white/60 dark:text-black/60">
+                          <div className="text-sm text-black/60 dark:text-white/60">
                             {testimonial.role}
                           </div>
                         </div>
                         <div className="flex gap-1">
                           {[...Array(testimonial.rating)].map((_, i) => (
-                            <Star key={i} className="w-4 h-4 fill-white dark:fill-black text-white dark:text-black" />
+                            <Star key={i} className="w-4 h-4 fill-black dark:fill-white text-black dark:text-white" />
                           ))}
                         </div>
                       </div>
