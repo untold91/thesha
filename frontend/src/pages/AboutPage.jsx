@@ -314,49 +314,50 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* ===== SECTION 4: Stats ===== */}
-      <section className="py-16 bg-black dark:bg-white">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-3 gap-8 text-center">
-              <div>
-                <div className="text-5xl font-bold text-white dark:text-black mb-2">
-                  {stats.project_completed}
-                </div>
-                <div className="text-sm text-white/60 dark:text-black/60">
-                  Projects Completed
-                </div>
-              </div>
-              <div>
-                <div className="text-5xl font-bold text-white dark:text-black mb-2">
-                  {stats.states_covered}
-                </div>
-                <div className="text-sm text-white/60 dark:text-black/60">
-                  States Served
-                </div>
-              </div>
-              <div>
-                <div className="text-5xl font-bold text-white dark:text-black mb-2">
-                  {stats.client_satisfaction}
-                </div>
-                <div className="text-sm text-white/60 dark:text-black/60">
-                  Client Satisfaction
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== SECTION 5: What Our Clients Say ===== */}
+      {/* ===== SECTION 4: What Our Clients Say (with Stats) ===== */}
       <section className="py-16 bg-black/5 dark:bg-white/5">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-black dark:text-white">
-              What Our Clients Say
-            </h2>
-
             <div className="bg-white dark:bg-black p-8 lg:p-12 rounded-3xl border border-black/10 dark:border-white/10 shadow-lg">
+              
+              {/* Stats Card - Single card with columns, no hover */}
+              <Card className="bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 mb-10">
+                <CardContent className="p-8">
+                  <div className="grid grid-cols-3 divide-x divide-black/10 dark:divide-white/10 text-center">
+                    <div className="px-4">
+                      <div className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-2">
+                        {stats.project_completed}
+                      </div>
+                      <div className="text-sm text-black/60 dark:text-white/60">
+                        Projects Completed
+                      </div>
+                    </div>
+                    <div className="px-4">
+                      <div className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-2">
+                        {stats.states_covered}
+                      </div>
+                      <div className="text-sm text-black/60 dark:text-white/60">
+                        States Served
+                      </div>
+                    </div>
+                    <div className="px-4">
+                      <div className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-2">
+                        {stats.client_satisfaction}
+                      </div>
+                      <div className="text-sm text-black/60 dark:text-white/60">
+                        Client Satisfaction
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* What Our Clients Say Title */}
+              <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-black dark:text-white">
+                What Our Clients Say
+              </h2>
+
+              {/* Testimonial Cards */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {mockData.testimonials.map((testimonial) => (
                   <Card 
